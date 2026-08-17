@@ -46,15 +46,20 @@ export default function FindUs() {
             <div className="rounded-[2rem] p-2 bg-white/[0.025] ring-1 ring-white/10">
               <div className="rounded-[1.625rem] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)]">
                 {/* Google Maps embed */}
-                <div className="relative h-60 sm:h-72 lg:h-80 bg-brand-dark-800">
+                <div className="relative h-60 sm:h-72 lg:h-80 bg-black overflow-hidden">
                   <iframe
                     src={GOOGLE_MAPS_EMBED_URL}
                     className="absolute inset-0 w-full h-full border-0"
-                    style={{ filter: 'brightness(0.55) contrast(1.2) invert(1) hue-rotate(180deg)' }}
+                    style={{ filter: 'grayscale(1) brightness(0.4) contrast(1.3)' }}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Where's the Burger location on Google Maps"
                     allowFullScreen
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-0 mix-blend-color"
+                    style={{ backgroundColor: 'rgba(229, 161, 0, 0.15)' }}
+                    aria-hidden="true"
                   />
                 </div>
 
