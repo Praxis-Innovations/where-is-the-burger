@@ -73,53 +73,51 @@ export default function About() {
 
           {/* Right — owner image collage */}
           <RevealSection delayMs={150} className="relative order-first lg:order-none">
-            {/* Double-bezel outer shell */}
-            <div className="rounded-[2rem] p-2 bg-white/[0.02] ring-1 ring-white/10">
-              {/* Inner core */}
-              <div className="rounded-[1.625rem] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)]">
-                {/* Main image — owner with burger */}
-                <div className="relative aspect-[16/10] sm:aspect-[4/3]">
-                  <Image
-                    src="/images/owner/766074874_18162072016453569_3928546251123518087_n.jpg"
-                    alt="Owner of Where's the Burger holding one of the signature burgers"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  {/* Dark overlay gradient */}
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)',
-                    }}
-                    aria-hidden="true"
-                  />
-                  {/* Caption overlay */}
-                  <div className="absolute bottom-4 left-4">
-                    <p className="font-bangers text-2xl text-white tracking-wide">The Man Behind the Bun</p>
-                    <p className="text-sm text-white/60">Rock-n-roll street food, one burger at a time</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating small image card — epic chainsaw action shot */}
-            <div className="absolute -bottom-6 -right-4 sm:-right-8 w-36 sm:w-44">
-              <div className="rounded-[1.25rem] p-1.5 bg-white/[0.03] ring-1 ring-white/10">
-                <div className="rounded-[0.875rem] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)]">
-                  <div className="relative aspect-square">
+            <div className="flex gap-3 sm:block sm:relative">
+              {/* Double-bezel outer shell — main image */}
+              <div className="flex-[3] rounded-[2rem] p-2 bg-white/[0.02] ring-1 ring-white/10">
+                <div className="rounded-[1.625rem] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)]">
+                  <div className="relative aspect-[3/4] sm:aspect-[4/3]">
                     <Image
-                      src="/images/owner/772632295_18162781051453569_6560050217998160816_n.jpg"
-                      alt="Owner in an epic action shot cutting a giant burger"
+                      src="/images/owner/766074874_18162072016453569_3928546251123518087_n.jpg"
+                      alt="Owner of Where's the Burger holding one of the signature burgers"
                       fill
                       className="object-cover"
-                      sizes="176px"
+                      sizes="(max-width: 640px) 65vw, (max-width: 1024px) 100vw, 50vw"
                     />
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)',
+                      }}
+                      aria-hidden="true"
+                    />
+                    <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4">
+                      <p className="font-bangers text-lg sm:text-2xl text-white tracking-wide">The Man Behind the Bun</p>
+                      <p className="text-xs sm:text-sm text-white/60 hidden sm:block">Rock-n-roll street food, one burger at a time</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="mt-2 pl-2">
-                <p className="font-bangers text-sm text-brand-gold">Going All In</p>
+
+              {/* Second image — inline on mobile, floating on sm+ */}
+              <div className="flex-[2] sm:absolute sm:-bottom-6 sm:-right-8 sm:w-44">
+                <div className="rounded-[1.25rem] p-1.5 bg-white/[0.03] ring-1 ring-white/10 h-full sm:h-auto">
+                  <div className="rounded-[0.875rem] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)]">
+                    <div className="relative aspect-[3/4] sm:aspect-square">
+                      <Image
+                        src="/images/owner/772632295_18162781051453569_6560050217998160816_n.jpg"
+                        alt="Owner in an epic action shot cutting a giant burger"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 35vw, 176px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-2 pl-2">
+                  <p className="font-bangers text-sm text-brand-gold">Going All In</p>
+                </div>
               </div>
             </div>
 

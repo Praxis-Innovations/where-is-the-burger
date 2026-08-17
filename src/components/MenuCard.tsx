@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
 import { formatPrice } from '@/lib/utils'
 import { UBER_EATS_URL } from '@/data/menu'
@@ -30,13 +33,15 @@ function SpiceIndicator({ level }: { level: MenuItem['spiceLevel'] }) {
 }
 
 export default function MenuCard({ item }: MenuCardProps) {
+  const [expanded, setExpanded] = useState(false)
+
   return (
     <article
       className="menu-card flex flex-col h-full cursor-default"
       aria-label={`${item.name}, ${formatPrice(item.price)}`}
     >
       <div className="rounded-[1.5rem] p-1.5 bg-white/[0.025] ring-1 ring-white/10 h-full flex flex-col">
-        <div className="menu-card-inner rounded-[1.25rem] bg-brand-dark-800 shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)] overflow-hidden flex flex-col flex-1 transition-shadow duration-300">
+        <div className="menu-card-inner rounded-[1.25rem] bg-brand-dark-800 shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)] overflow-hidden flex flex-col flex-1 transition-shadow duration-300 relative">
 
           {/* Food photo */}
           {item.image ? (
@@ -62,6 +67,50 @@ export default function MenuCard({ item }: MenuCardProps) {
               <span className="text-4xl opacity-20" aria-hidden="true">
                 <DrumstickIcon size={48} className="text-white/30" />
               </span>
+            </div>
+          )}
+
+          {/* Expanded description overlay */}
+          {expanded && (
+            <div
+              className="absolute inset-0 z-10 flex flex-col bg-brand-dark-800/95 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+              onClick={() => setExpanded(false)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Escape' || e.key === 'Enter') setExpanded(false) }}
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <span
+                  className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide ${
+                    item.isVegetarian
+                      ? 'bg-green-500/10 text-green-400 border border-green-500/20'
+                      : 'bg-orange-500/10 text-orange-400 border border-orange-500/20'
+                  }`}
+                >
+                  {item.isVegetarian ? (
+                    <><LeafIcon size={12} /> Veg</>
+                  ) : (
+                    <><DrumstickIcon size={12} /> Chicken</>
+                  )}
+                </span>
+                {item.spiceLevel && item.spiceLevel !== 'mild' && (
+                  <SpiceIndicator level={item.spiceLevel} />
+                )}
+              </div>
+              <h3 className="font-bangers text-xl text-white leading-tight tracking-wide mb-2">
+                {item.name}
+              </h3>
+              <p className="text-white/60 text-sm leading-relaxed flex-1">
+                {item.description}
+              </p>
+              <div className="flex items-center justify-between pt-3 border-t border-white/5 mt-3">
+                <span className="font-bangers text-2xl text-brand-gold tracking-wide">
+                  {formatPrice(item.price)}
+                </span>
+                <span className="text-[11px] text-white/30 uppercase tracking-widest">
+                  Tap to close
+                </span>
+              </div>
             </div>
           )}
 
@@ -92,10 +141,18 @@ export default function MenuCard({ item }: MenuCardProps) {
               {item.name}
             </h3>
 
-            {/* Description */}
-            <p className="text-white/50 text-sm leading-relaxed line-clamp-2 flex-1">
-              {item.description}
-            </p>
+            {/* Description with See more */}
+            <div className="flex-1">
+              <p className="text-white/50 text-sm leading-relaxed line-clamp-2">
+                {item.description}
+              </p>
+              <button
+                onClick={() => setExpanded(true)}
+                className="text-brand-gold text-xs font-semibold mt-1 hover:text-brand-gold-light transition-colors"
+              >
+                See more
+              </button>
+            </div>
 
             {/* Price */}
             <div className="flex items-center justify-between pt-2 border-t border-white/5 mt-auto">
