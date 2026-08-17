@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Custom Properties ──────────────────────────────────────────────────── */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --gold: #E5A100;
+  --gold-dim: #B87D00;
+  --gold-glow: rgba(229, 161, 0, 0.35);
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Skip Nav ───────────────────────────────────────────────────────────── */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 999;
+  padding: 0.5rem 1rem;
+  background: #E5A100;
+  color: #000;
+  font-weight: 700;
+  border-radius: 0 0 0.5rem 0.5rem;
+  transition: top 0.2s;
+}
+.skip-nav:focus {
+  top: 0;
+}
+
+/* ── Scroll Progress Bar ────────────────────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #E5A100, #F5B83D);
+  z-index: 100;
+  transition: width 80ms linear;
+  transform-origin: left;
+}
+
+/* ── Gold Text Gradient ─────────────────────────────────────────────────── */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F5B83D 0%, #E5A100 50%, #B87D00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Floating Food Elements ─────────────────────────────────────────────── */
+.floating-element {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+  font-size: 2rem;
+  opacity: 0.07;
+}
+
+/* ── Steam Animations ───────────────────────────────────────────────────── */
+.steam-puff {
+  animation: steamRise 2s ease-out infinite;
+  transform-origin: bottom center;
+}
+.steam-puff:nth-child(2) { animation-delay: 0.65s; }
+.steam-puff:nth-child(3) { animation-delay: 1.3s; }
+
+@keyframes steamRise {
+  0%   { opacity: 0.75; transform: translateY(0px) scale(1); }
+  100% { opacity: 0;    transform: translateY(-36px) scale(2.4); }
+}
+
+/* ── Menu Card Hover ────────────────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  .menu-card:hover {
+    transform: scale(1.03);
+    transition: transform 300ms var(--ease-out);
+  }
+
+  .menu-card:hover .menu-card-inner {
+    box-shadow:
+      0 0 0 1px rgba(229, 161, 0, 0.6),
+      0 0 24px rgba(229, 161, 0, 0.2);
+  }
+
+  .menu-card:hover .card-image img {
+    transform: scale(1.06);
+  }
+}
+
+.menu-card {
+  transition: transform 300ms var(--ease-out);
+}
+
+.card-image img {
+  transition: transform 600ms var(--ease-out);
+}
+
+/* ── Carousel Scroll ────────────────────────────────────────────────────── */
+.carousel-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Gold Glow Button ───────────────────────────────────────────────────── */
+.btn-gold-glow {
+  animation: pulseGoldBtn 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseGoldBtn {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(229, 161, 0, 0); }
+  50%       { box-shadow: 0 0 0 6px rgba(229, 161, 0, 0), 0 0 28px rgba(229, 161, 0, 0.45); }
+}
+
+/* ── Social Icon Hover ──────────────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  .social-icon:hover {
+    animation: spinOnce 0.45s var(--ease-out);
+  }
+}
+
+@keyframes spinOnce {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Nav Tab Indicator ──────────────────────────────────────────────────── */
+.menu-tab-active {
+  background: #E5A100;
+  color: #000;
+}
+
+.menu-tab-inactive {
+  background: transparent;
+  color: rgba(229, 161, 0, 0.7);
+  border: 1px solid rgba(229, 161, 0, 0.3);
+}
+
+/* ── Star Rating ────────────────────────────────────────────────────────── */
+.star-filled  { color: #E5A100; }
+.star-empty   { color: rgba(229, 161, 0, 0.2); }
+
+/* ── Form Focus ─────────────────────────────────────────────────────────── */
+.form-input:focus {
+  outline: none;
+  border-color: #E5A100;
+  box-shadow: 0 0 0 3px rgba(229, 161, 0, 0.15);
+}
+
+/* ── Section Divider ────────────────────────────────────────────────────── */
+.gold-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #E5A100, transparent);
+  border-radius: 2px;
+}
+
+/* ── Keyboard Focus Indicator ───────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #E5A100;
+  outline-offset: 3px;
+}
+
+/* ── Reduced Motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .floating-element {
+    display: none;
+  }
+
+  .steam-puff {
+    display: none;
+  }
+}
+
+/* ── Utility: Hide scrollbar ────────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Image Hover Zoom Container ─────────────────────────────────────────── */
+.img-zoom-container {
+  overflow: hidden;
+}

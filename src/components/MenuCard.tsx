@@ -1,0 +1,120 @@
+import Image from 'next/image'
+import { formatPrice } from '@/lib/utils'
+import { UBER_EATS_URL } from '@/data/menu'
+import { LeafIcon, DrumstickIcon, FlameIcon } from '@/components/ui/Icons'
+import type { MenuItem } from '@/types'
+
+interface MenuCardProps {
+  item: MenuItem
+}
+
+function SpiceIndicator({ level }: { level: MenuItem['spiceLevel'] }) {
+  if (!level || level === 'mild') return null
+  const counts = { mild: 0, medium: 1, hot: 2 }
+  const count = counts[level] ?? 0
+  const labels = { mild: 'Mild', medium: 'Medium Heat', hot: 'Hot' }
+  return (
+    <div
+      className="flex items-center gap-0.5"
+      aria-label={`Spice level: ${labels[level]}`}
+    >
+      {Array.from({ length: 2 }).map((_, i) => (
+        <FlameIcon
+          key={i}
+          size={13}
+          className={`${i < count ? 'text-orange-400 opacity-100' : 'text-white/20 opacity-40'}`}
+        />
+      ))}
+    </div>
+  )
+}
+
+export default function MenuCard({ item }: MenuCardProps) {
+  return (
+    <article
+      className="menu-card flex flex-col h-full cursor-default"
+      aria-label={`${item.name}, ${formatPrice(item.price)}`}
+    >
+      <div className="rounded-[1.5rem] p-1.5 bg-white/[0.025] ring-1 ring-white/10 h-full flex flex-col">
+        <div className="menu-card-inner rounded-[1.25rem] bg-brand-dark-800 shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)] overflow-hidden flex flex-col flex-1 transition-shadow duration-300">
+
+          {/* Food photo */}
+          {item.image ? (
+            <div className="card-image relative aspect-[16/9] overflow-hidden flex-shrink-0">
+              <Image
+                src={item.image}
+                alt={`${item.name} — ${item.description.slice(0, 80)}...`}
+                fill
+                className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                loading="lazy"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: 'linear-gradient(to top, rgba(17,17,17,0.8) 0%, transparent 50%)',
+                }}
+                aria-hidden="true"
+              />
+            </div>
+          ) : (
+            <div className="relative aspect-[16/9] flex-shrink-0 bg-brand-dark-700 flex items-center justify-center">
+              <span className="text-4xl opacity-20" aria-hidden="true">
+                <DrumstickIcon size={48} className="text-white/30" />
+              </span>
+            </div>
+          )}
+
+          {/* Card content */}
+          <div className="flex flex-col flex-1 gap-2 p-3 sm:p-4">
+            {/* Badges row */}
+            <div className="flex items-center gap-2 flex-wrap">
+              <span
+                className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide ${
+                  item.isVegetarian
+                    ? 'bg-green-500/10 text-green-400 border border-green-500/20'
+                    : 'bg-orange-500/10 text-orange-400 border border-orange-500/20'
+                }`}
+              >
+                {item.isVegetarian ? (
+                  <><LeafIcon size={12} /> Veg</>
+                ) : (
+                  <><DrumstickIcon size={12} /> Chicken</>
+                )}
+              </span>
+              {item.spiceLevel && item.spiceLevel !== 'mild' && (
+                <SpiceIndicator level={item.spiceLevel} />
+              )}
+            </div>
+
+            {/* Name */}
+            <h3 className="font-bangers text-xl sm:text-2xl text-white leading-tight tracking-wide">
+              {item.name}
+            </h3>
+
+            {/* Description */}
+            <p className="text-white/50 text-sm leading-relaxed line-clamp-2 flex-1">
+              {item.description}
+            </p>
+
+            {/* Price */}
+            <div className="flex items-center justify-between pt-2 border-t border-white/5 mt-auto">
+              <span className="font-bangers text-2xl text-brand-gold tracking-wide">
+                {formatPrice(item.price)}
+              </span>
+              <a
+                href={UBER_EATS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] font-semibold text-white/30 uppercase tracking-widest hover:text-brand-gold transition-colors duration-200"
+                aria-label={`Order ${item.name} on Uber Eats`}
+              >
+                Order ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  )
+}
