@@ -74,15 +74,15 @@ export default function About() {
           {/* Right — owner image collage */}
           <RevealSection delayMs={150} className="relative order-first lg:order-none">
             <div className="flex flex-col gap-3 sm:block sm:relative">
-              {/* Main image */}
+              {/* Main image — ~square original (2224x2030) */}
               <div className="rounded-[2rem] p-2 bg-white/[0.02] ring-1 ring-white/10">
-                <div className="rounded-[1.625rem] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)]">
-                  <div className="relative aspect-[16/10] sm:aspect-[4/3]">
+                <div className="rounded-[1.625rem] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)] bg-black">
+                  <div className="relative aspect-square sm:aspect-[4/3]">
                     <Image
                       src="/images/owner/766074874_18162072016453569_3928546251123518087_n.jpg"
                       alt="Owner of Where's the Burger holding one of the signature burgers"
                       fill
-                      className="object-cover"
+                      className="object-contain sm:object-cover"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                     <div
@@ -100,16 +100,16 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Second image — full width on mobile, floating on sm+ */}
+              {/* Second image — portrait original (1424x1899), full width on mobile, floating on sm+ */}
               <div className="sm:absolute sm:-bottom-6 sm:-right-8 sm:w-44">
                 <div className="rounded-[1.25rem] p-1.5 bg-white/[0.03] ring-1 ring-white/10">
-                  <div className="rounded-[0.875rem] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)]">
-                    <div className="relative aspect-[21/9] sm:aspect-square">
+                  <div className="rounded-[0.875rem] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)] bg-black">
+                    <div className="relative aspect-[3/4] sm:aspect-square">
                       <Image
                         src="/images/owner/772632295_18162781051453569_6560050217998160816_n.jpg"
                         alt="Owner in an epic action shot cutting a giant burger"
                         fill
-                        className="object-cover"
+                        className="object-contain sm:object-cover"
                         sizes="(max-width: 640px) 100vw, 176px"
                       />
                     </div>
