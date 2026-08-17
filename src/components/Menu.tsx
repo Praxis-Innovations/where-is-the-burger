@@ -27,7 +27,14 @@ export default function Menu() {
 
   const handleCategoryClick = useCallback((id: MenuCategory, e: React.MouseEvent<HTMLButtonElement>) => {
     setActiveCategory(id)
-    e.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+    const container = tabContainerRef.current
+    const button = e.currentTarget
+    if (container && button) {
+      const containerRect = container.getBoundingClientRect()
+      const buttonRect = button.getBoundingClientRect()
+      const scrollLeft = container.scrollLeft + (buttonRect.left - containerRect.left) - (containerRect.width / 2) + (buttonRect.width / 2)
+      container.scrollTo({ left: scrollLeft, behavior: 'smooth' })
+    }
   }, [])
 
   return (

@@ -11,7 +11,9 @@ import { LeafIcon, DrumstickIcon } from '@/components/ui/Icons'
 
 export default function FeaturedCarousel() {
   const trackRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const isPausedRef = useRef(false)
+  const isVisibleRef = useRef(false)
   const [activeIndex, setActiveIndex] = useState(0)
   const reduceMotion = useReducedMotion()
 
@@ -22,6 +24,20 @@ export default function FeaturedCarousel() {
     track.scrollTo({ left: i * cardWidth, behavior: 'smooth' })
   }, [])
 
+  // Track whether the carousel section is in the viewport
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisibleRef.current = entry.isIntersecting },
+      { threshold: 0.2 }
+    )
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [])
+
+  // Sync dots with manual scroll position
   useEffect(() => {
     const track = trackRef.current
     if (!track) return
@@ -45,11 +61,12 @@ export default function FeaturedCarousel() {
     }
   }, [])
 
+  // Auto-advance only when visible and not paused
   useEffect(() => {
     if (reduceMotion) return
 
     const id = setInterval(() => {
-      if (isPausedRef.current) return
+      if (isPausedRef.current || !isVisibleRef.current) return
       setActiveIndex(prev => {
         const next = (prev + 1) % featuredItems.length
         scrollToIndex(next)
@@ -67,6 +84,7 @@ export default function FeaturedCarousel() {
 
   return (
     <section
+      ref={sectionRef}
       className="relative bg-black py-12 md:py-16 overflow-hidden"
       aria-labelledby="featured-heading"
     >

@@ -21,7 +21,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-black"
+      className="relative flex min-h-screen min-h-[100svh] flex-col overflow-hidden bg-black"
       aria-label="Hero section"
     >
       {/* Subtle noise texture overlay */}
