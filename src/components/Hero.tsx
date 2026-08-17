@@ -8,7 +8,7 @@ import {
   heroCtaVariants,
 } from '@/lib/animations'
 import { UBER_EATS_URL, PHONE, PHONE_HREF } from '@/data/menu'
-import { PhoneIcon } from '@/components/ui/Icons'
+import { Phone } from 'lucide-react'
 
 const FoodTruckSVG = dynamic(() => import('./FoodTruckSVG'), {
   ssr: false,
@@ -138,7 +138,7 @@ export default function Hero() {
             className="mt-2 inline-flex items-center gap-1.5 text-sm text-white/40 transition-colors hover:text-brand-gold"
             style={{ willChange: 'transform, opacity' }}
           >
-            <PhoneIcon size={14} />
+            <Phone size={14} />
             {PHONE}
           </motion.a>
         </div>

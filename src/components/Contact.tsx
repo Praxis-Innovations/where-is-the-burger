@@ -2,8 +2,9 @@
 
 import SectionHeading from '@/components/ui/SectionHeading'
 import RevealSection from '@/components/ui/RevealSection'
-import { UBER_EATS_URL, INSTAGRAM_URL, PHONE, PHONE_HREF, ADDRESS, GOOGLE_URL } from '@/data/menu'
-import { PhoneIcon, CameraIcon, MapPinIcon, RockHandIcon, ExternalLinkIcon } from '@/components/ui/Icons'
+import { UBER_EATS_URL, INSTAGRAM_URL, TIKTOK_URL, PHONE, PHONE_HREF, EMAIL, EMAIL_HREF } from '@/data/menu'
+import { Phone, Camera, Mail, HandMetal } from 'lucide-react'
+import { TikTokIcon } from '@/components/ui/Icons'
 
 export default function Contact() {
   return (
@@ -61,7 +62,7 @@ export default function Contact() {
                 className="group flex items-center gap-4 rounded-[1.5rem] border border-white/10 px-5 py-4 transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-brand-gold/40 hover:bg-brand-gold/5 h-full"
               >
                 <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand-gold/10 transition-transform duration-300 group-hover:scale-110">
-                  <PhoneIcon size={20} className="text-brand-gold" />
+                  <Phone size={20} className="text-brand-gold" />
                 </span>
                 <div className="min-w-0">
                   <p className="text-xs text-white/40 uppercase tracking-widest mb-0.5">Call / Text</p>
@@ -70,6 +71,25 @@ export default function Contact() {
               </a>
             </RevealSection>
 
+            {/* Email */}
+            <RevealSection delayMs={140}>
+              <a
+                href={EMAIL_HREF}
+                className="group flex items-center gap-4 rounded-[1.5rem] border border-white/10 px-5 py-4 transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-brand-gold/40 hover:bg-brand-gold/5 h-full"
+              >
+                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand-gold/10 transition-transform duration-300 group-hover:scale-110">
+                  <Mail size={20} className="text-brand-gold" />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-xs text-white/40 uppercase tracking-widest mb-0.5">Email</p>
+                  <p className="font-semibold text-white text-sm">{EMAIL}</p>
+                </div>
+              </a>
+            </RevealSection>
+          </div>
+
+          {/* Social links */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Instagram */}
             <RevealSection delayMs={160}>
               <a
@@ -79,7 +99,7 @@ export default function Contact() {
                 className="group flex items-center gap-4 rounded-[1.5rem] border border-white/10 px-5 py-4 transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-pink-500/40 hover:bg-pink-500/5 h-full"
               >
                 <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-orange-400/20 social-icon transition-transform duration-300 group-hover:scale-110">
-                  <CameraIcon size={20} className="text-pink-400" />
+                  <Camera size={20} className="text-pink-400" />
                 </span>
                 <div className="min-w-0">
                   <p className="text-xs text-white/40 uppercase tracking-widest mb-0.5">Instagram</p>
@@ -87,38 +107,35 @@ export default function Contact() {
                 </div>
               </a>
             </RevealSection>
+
+            {/* TikTok */}
+            <RevealSection delayMs={180}>
+              <a
+                href={TIKTOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-[1.5rem] border border-white/10 px-5 py-4 transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-white/30 hover:bg-white/5 h-full"
+              >
+                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10 transition-transform duration-300 group-hover:scale-110">
+                  <TikTokIcon size={20} className="text-white" />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-xs text-white/40 uppercase tracking-widest mb-0.5">TikTok</p>
+                  <p className="font-semibold text-white">@wheres.the.burger</p>
+                </div>
+              </a>
+            </RevealSection>
           </div>
 
-          {/* Address */}
-          <RevealSection delayMs={200}>
-            <a
-              href={GOOGLE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-[1.5rem] border border-white/10 px-5 py-4 transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-brand-gold/40 hover:bg-brand-gold/5"
-            >
-              <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand-gold/10 transition-transform duration-300 group-hover:scale-110">
-                <MapPinIcon size={20} className="text-brand-gold" />
-              </span>
-              <div className="min-w-0">
-                <p className="text-xs text-white/40 uppercase tracking-widest mb-0.5">Location</p>
-                <p className="font-semibold text-white text-sm">{ADDRESS}</p>
-                <p className="text-xs text-white/30 mt-0.5 inline-flex items-center gap-1">
-                  View on Google Maps <ExternalLinkIcon size={10} />
-                </p>
-              </div>
-            </a>
-          </RevealSection>
-
           {/* Catering note */}
-          <RevealSection delayMs={240}>
+          <RevealSection delayMs={200}>
             <div className="rounded-[1.5rem] border border-brand-gold/10 bg-brand-gold/[0.04] p-5">
               <p className="font-bangers text-xl text-brand-gold mb-2 inline-flex items-center gap-2">
-                Catering & Events <RockHandIcon size={18} />
+                Catering & Events <HandMetal size={18} />
               </p>
               <p className="text-sm text-white/60 leading-relaxed">
                 Feeding your crew? Corporate event, wedding, birthday, festival — we bring the whole
-                operation to you. DM us on Instagram or give us a call to get started.
+                operation to you. Give us a call or email to get started.
               </p>
             </div>
           </RevealSection>
