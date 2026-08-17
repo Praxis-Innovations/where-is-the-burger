@@ -154,14 +154,14 @@ export default function MenuCard({ item }: MenuCardProps) {
               {item.name}
             </h3>
 
-            {/* Description with See more below */}
-            <div className="flex-1">
+            {/* Description with inline See more */}
+            <div className="flex-1 relative">
               <p className="text-white/50 text-sm leading-relaxed line-clamp-2">
                 {item.description}
               </p>
               <button
                 onClick={() => setExpanded(true)}
-                className="text-brand-gold text-xs font-semibold mt-1 hover:text-brand-gold-light transition-colors"
+                className="absolute bottom-0 right-0 text-brand-gold text-sm font-semibold leading-relaxed bg-gradient-to-l from-brand-dark-800 from-60% to-transparent pl-8 hover:text-brand-gold-light transition-colors"
               >
                 See more
               </button>
