@@ -7,15 +7,15 @@ import { staggerContainerVariants, staggerChildVariants } from '@/lib/animations
 import SectionHeading from '@/components/ui/SectionHeading'
 import RevealSection from '@/components/ui/RevealSection'
 import MenuCard from '@/components/MenuCard'
-import { LeafIcon, DrumstickIcon, FriesIcon, BreadIcon, CupIcon } from '@/components/ui/Icons'
+import { Leaf, Drumstick, Salad, Sandwich, CupSoda, type LucideIcon } from 'lucide-react'
 import type { MenuCategory } from '@/types'
 
-const iconMap: Record<string, typeof LeafIcon> = {
-  leaf: LeafIcon,
-  drumstick: DrumstickIcon,
-  fries: FriesIcon,
-  bread: BreadIcon,
-  cup: CupIcon,
+const iconMap: Record<string, LucideIcon> = {
+  leaf: Leaf,
+  drumstick: Drumstick,
+  fries: Salad,
+  bread: Sandwich,
+  cup: CupSoda,
 }
 
 export default function Menu() {

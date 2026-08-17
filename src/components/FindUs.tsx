@@ -4,6 +4,7 @@ import SectionHeading from '@/components/ui/SectionHeading'
 import RevealSection from '@/components/ui/RevealSection'
 import {
   INSTAGRAM_URL,
+  TIKTOK_URL,
   ADDRESS,
   PHONE,
   PHONE_HREF,
@@ -11,7 +12,8 @@ import {
   GOOGLE_MAPS_DIRECTIONS_URL,
   hours,
 } from '@/data/menu'
-import { MapPinIcon, PhoneIcon, CameraIcon, ExternalLinkIcon } from '@/components/ui/Icons'
+import { MapPin, Phone, Camera, ExternalLink } from 'lucide-react'
+import { TikTokIcon } from '@/components/ui/Icons'
 
 export default function FindUs() {
   return (
@@ -44,10 +46,11 @@ export default function FindUs() {
             <div className="rounded-[2rem] p-2 bg-white/[0.025] ring-1 ring-white/10">
               <div className="rounded-[1.625rem] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)]">
                 {/* Google Maps embed */}
-                <div className="relative h-60 sm:h-72 lg:h-80 bg-brand-dark">
+                <div className="relative h-60 sm:h-72 lg:h-80 bg-brand-dark-800">
                   <iframe
                     src={GOOGLE_MAPS_EMBED_URL}
-                    className="absolute inset-0 w-full h-full border-0 brightness-[0.55] contrast-[1.2] invert hue-rotate-180"
+                    className="absolute inset-0 w-full h-full border-0"
+                    style={{ filter: 'brightness(0.55) contrast(1.2) invert(1) hue-rotate(180deg)' }}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Where's the Burger location on Google Maps"
@@ -59,7 +62,7 @@ export default function FindUs() {
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between p-4 bg-brand-dark-800">
                   <div className="flex items-center gap-2.5">
                     <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-brand-gold/10">
-                      <MapPinIcon size={16} className="text-brand-gold" />
+                      <MapPin size={16} className="text-brand-gold" />
                     </span>
                     <p className="text-sm text-white/70 leading-snug">{ADDRESS}</p>
                   </div>
@@ -70,7 +73,7 @@ export default function FindUs() {
                     className="inline-flex items-center justify-center gap-1.5 rounded-full bg-brand-gold px-4 py-2 text-sm font-bold text-black transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-brand-gold-light active:scale-[0.97] flex-shrink-0"
                   >
                     Get Directions
-                    <ExternalLinkIcon size={13} />
+                    <ExternalLink size={13} />
                   </a>
                 </div>
               </div>
@@ -96,33 +99,32 @@ export default function FindUs() {
               </div>
             </RevealSection>
 
-            {/* Instagram CTA */}
+            {/* Social CTAs — Instagram + TikTok */}
             <RevealSection delayMs={120}>
               <div className="rounded-[1.5rem] p-1.5 bg-white/[0.025] ring-1 ring-white/10">
                 <div className="rounded-[1.25rem] bg-brand-dark-800 shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)] p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 text-white">
-                      <CameraIcon size={18} />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white text-sm">Follow for updates</p>
-                      <p className="text-xs text-white/40">@wherestheburger</p>
-                    </div>
+                  <p className="font-semibold text-white text-sm mb-1">Follow for updates</p>
+                  <p className="text-xs text-white/40 mb-4">Specials, new items, and the daily vibe.</p>
+                  <div className="flex flex-col gap-2.5">
+                    <a
+                      href={INSTAGRAM_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 px-5 py-3 text-sm font-bold text-white transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:opacity-90 active:scale-[0.97]"
+                    >
+                      <Camera size={16} />
+                      Follow on Instagram
+                    </a>
+                    <a
+                      href={TIKTOK_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white/10 px-5 py-3 text-sm font-bold text-white transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-white/15 active:scale-[0.97]"
+                    >
+                      <TikTokIcon size={16} />
+                      Follow on TikTok
+                    </a>
                   </div>
-                  <p className="text-sm text-white/50 mb-4">
-                    Specials, new items, and the daily vibe — it&apos;s all on Instagram.
-                  </p>
-                  <a
-                    href={INSTAGRAM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 px-5 py-3 text-sm font-bold text-white transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:opacity-90 active:scale-[0.97]"
-                  >
-                    Follow on Instagram
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-xs" aria-hidden="true">
-                      ↗
-                    </span>
-                  </a>
                 </div>
               </div>
             </RevealSection>
@@ -134,7 +136,7 @@ export default function FindUs() {
                 className="group flex items-center gap-3 rounded-[1.5rem] border border-white/10 px-5 py-4 transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-brand-gold/40 hover:bg-brand-gold/5"
               >
                 <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-brand-gold/10 transition-transform duration-300 group-hover:scale-110">
-                  <PhoneIcon size={18} className="text-brand-gold" />
+                  <Phone size={18} className="text-brand-gold" />
                 </span>
                 <div className="min-w-0">
                   <p className="text-xs text-white/40 uppercase tracking-widest mb-0.5">Call us</p>

@@ -7,7 +7,7 @@ import { featuredItems, UBER_EATS_URL } from '@/data/menu'
 import { formatPrice } from '@/lib/utils'
 import SectionHeading from '@/components/ui/SectionHeading'
 import RevealSection from '@/components/ui/RevealSection'
-import { LeafIcon, DrumstickIcon } from '@/components/ui/Icons'
+import { Leaf, Drumstick } from 'lucide-react'
 
 export default function FeaturedCarousel() {
   const trackRef = useRef<HTMLDivElement>(null)
@@ -166,9 +166,9 @@ export default function FeaturedCarousel() {
                             }`}
                           >
                             {item.isVegetarian ? (
-                              <><LeafIcon size={13} /> Veg</>
+                              <><Leaf size={13} /> Veg</>
                             ) : (
-                              <><DrumstickIcon size={13} /> Chicken</>
+                              <><Drumstick size={13} /> Chicken</>
                             )}
                           </span>
                         </div>

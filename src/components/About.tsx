@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import SectionHeading from '@/components/ui/SectionHeading'
 import RevealSection from '@/components/ui/RevealSection'
-import { LeafIcon, FlameIcon, BreadIcon, UtensilsIcon } from '@/components/ui/Icons'
+import { Leaf, Flame, Sandwich, Utensils } from 'lucide-react'
 
 export default function About() {
   return (
@@ -55,10 +55,10 @@ export default function About() {
             {/* Feature badges */}
             <div className="flex flex-wrap gap-3 pt-2">
               {[
-                { icon: LeafIcon, label: 'Veg & Non-Veg Options' },
-                { icon: BreadIcon, label: 'Toasted Brioche Buns' },
-                { icon: UtensilsIcon, label: 'House-Made Sauces' },
-                { icon: FlameIcon, label: 'Made Fresh to Order' },
+                { icon: Leaf, label: 'Veg & Non-Veg Options' },
+                { icon: Sandwich, label: 'Toasted Brioche Buns' },
+                { icon: Utensils, label: 'House-Made Sauces' },
+                { icon: Flame, label: 'Made Fresh to Order' },
               ].map(({ icon: Icon, label }) => (
                 <span
                   key={label}

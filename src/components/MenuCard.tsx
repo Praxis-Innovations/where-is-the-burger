@@ -4,11 +4,28 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { formatPrice } from '@/lib/utils'
 import { UBER_EATS_URL } from '@/data/menu'
-import { LeafIcon, DrumstickIcon, FlameIcon } from '@/components/ui/Icons'
+import { Leaf, Drumstick, Flame, Droplets, CupSoda } from 'lucide-react'
 import type { MenuItem } from '@/types'
 
 interface MenuCardProps {
   item: MenuItem
+}
+
+const placeholderIcons: Record<string, typeof Droplets> = {
+  water: Droplets,
+  pop: CupSoda,
+}
+
+function AnimatedPlaceholder({ itemId }: { itemId: string }) {
+  const Icon = placeholderIcons[itemId] ?? CupSoda
+  return (
+    <div className="relative aspect-[16/9] flex-shrink-0 bg-gradient-to-br from-brand-dark-800 to-brand-dark flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.03]" style={{ background: 'radial-gradient(circle, #E5A100 0%, transparent 70%)' }} />
+      <div className="animate-pulse">
+        <Icon size={64} className="text-brand-gold/30" strokeWidth={1.5} />
+      </div>
+    </div>
+  )
 }
 
 function SpiceIndicator({ level }: { level: MenuItem['spiceLevel'] }) {
@@ -22,7 +39,7 @@ function SpiceIndicator({ level }: { level: MenuItem['spiceLevel'] }) {
       aria-label={`Spice level: ${labels[level]}`}
     >
       {Array.from({ length: 2 }).map((_, i) => (
-        <FlameIcon
+        <Flame
           key={i}
           size={13}
           className={`${i < count ? 'text-orange-400 opacity-100' : 'text-white/20 opacity-40'}`}
@@ -43,7 +60,7 @@ export default function MenuCard({ item }: MenuCardProps) {
       <div className="rounded-[1.5rem] p-1.5 bg-white/[0.025] ring-1 ring-white/10 h-full flex flex-col">
         <div className="menu-card-inner rounded-[1.25rem] bg-brand-dark-800 shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)] overflow-hidden flex flex-col flex-1 transition-shadow duration-300 relative">
 
-          {/* Food photo */}
+          {/* Food photo or animated placeholder */}
           {item.image ? (
             <div className="card-image relative aspect-[16/9] overflow-hidden flex-shrink-0">
               <Image
@@ -63,17 +80,13 @@ export default function MenuCard({ item }: MenuCardProps) {
               />
             </div>
           ) : (
-            <div className="relative aspect-[16/9] flex-shrink-0 bg-brand-dark-700 flex items-center justify-center">
-              <span className="text-4xl opacity-20" aria-hidden="true">
-                <DrumstickIcon size={48} className="text-white/30" />
-              </span>
-            </div>
+            <AnimatedPlaceholder itemId={item.id} />
           )}
 
           {/* Expanded description overlay */}
           {expanded && (
             <div
-              className="absolute inset-0 z-10 flex flex-col bg-brand-dark-800/95 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+              className="absolute inset-0 z-10 flex flex-col bg-brand-dark-800/95 backdrop-blur-sm p-4"
               onClick={() => setExpanded(false)}
               role="button"
               tabIndex={0}
@@ -88,9 +101,9 @@ export default function MenuCard({ item }: MenuCardProps) {
                   }`}
                 >
                   {item.isVegetarian ? (
-                    <><LeafIcon size={12} /> Veg</>
+                    <><Leaf size={12} /> Veg</>
                   ) : (
-                    <><DrumstickIcon size={12} /> Chicken</>
+                    <><Drumstick size={12} /> Chicken</>
                   )}
                 </span>
                 {item.spiceLevel && item.spiceLevel !== 'mild' && (
@@ -126,9 +139,9 @@ export default function MenuCard({ item }: MenuCardProps) {
                 }`}
               >
                 {item.isVegetarian ? (
-                  <><LeafIcon size={12} /> Veg</>
+                  <><Leaf size={12} /> Veg</>
                 ) : (
-                  <><DrumstickIcon size={12} /> Chicken</>
+                  <><Drumstick size={12} /> Chicken</>
                 )}
               </span>
               {item.spiceLevel && item.spiceLevel !== 'mild' && (
@@ -141,17 +154,18 @@ export default function MenuCard({ item }: MenuCardProps) {
               {item.name}
             </h3>
 
-            {/* Description with See more */}
+            {/* Description with inline See more */}
             <div className="flex-1">
               <p className="text-white/50 text-sm leading-relaxed line-clamp-2">
                 {item.description}
+                {' '}
+                <button
+                  onClick={() => setExpanded(true)}
+                  className="text-brand-gold font-semibold hover:text-brand-gold-light transition-colors inline"
+                >
+                  See more
+                </button>
               </p>
-              <button
-                onClick={() => setExpanded(true)}
-                className="text-brand-gold text-xs font-semibold mt-1 hover:text-brand-gold-light transition-colors"
-              >
-                See more
-              </button>
             </div>
 
             {/* Price */}

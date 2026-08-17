@@ -1,9 +1,10 @@
 'use client'
 
-import { reviews, GOOGLE_URL, INSTAGRAM_URL } from '@/data/menu'
+import { reviews, GOOGLE_URL, INSTAGRAM_URL, TIKTOK_URL } from '@/data/menu'
 import SectionHeading from '@/components/ui/SectionHeading'
 import RevealSection from '@/components/ui/RevealSection'
-import { StarIcon, GoogleIcon, CameraIcon, RockHandIcon } from '@/components/ui/Icons'
+import { Star, Camera, HandMetal } from 'lucide-react'
+import { GoogleIcon, TikTokIcon } from '@/components/ui/Icons'
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -13,9 +14,10 @@ function StarRating({ rating }: { rating: number }) {
       aria-label={`${rating} out of 5 stars`}
     >
       {Array.from({ length: 5 }).map((_, i) => (
-        <StarIcon
+        <Star
           key={i}
           size={14}
+          fill={i < rating ? 'currentColor' : 'none'}
           className={i < rating ? 'text-brand-gold' : 'text-white/15'}
         />
       ))}
@@ -48,7 +50,7 @@ export default function Reviews() {
               key={i}
               className="inline-flex items-center gap-4 px-8 font-bangers text-xl text-brand-gold/30 tracking-widest"
             >
-              <RockHandIcon size={18} className="inline" /> ROCK REVIEWS <span className="mx-1">&#8226;</span> WHERE&apos;S THE BURGER <span className="mx-1">&#8226;</span> INDIAN FUSION <span className="mx-1">&#8226;</span> GTA STREET FOOD
+              <HandMetal size={18} className="inline" /> ROCK REVIEWS <span className="mx-1">&#8226;</span> WHERE&apos;S THE BURGER <span className="mx-1">&#8226;</span> INDIAN FUSION <span className="mx-1">&#8226;</span> GTA STREET FOOD
             </span>
           ))}
         </div>
@@ -118,7 +120,15 @@ export default function Reviews() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-2.5 text-sm text-white/60 transition-all duration-300 hover:border-pink-500/40 hover:text-pink-400"
             >
-              <CameraIcon size={16} /> @wherestheburger
+              <Camera size={16} /> @wherestheburger
+            </a>
+            <a
+              href={TIKTOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-2.5 text-sm text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white"
+            >
+              <TikTokIcon size={16} /> @wheres.the.burger
             </a>
           </div>
         </RevealSection>

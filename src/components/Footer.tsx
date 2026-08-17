@@ -1,6 +1,7 @@
 import Image from 'next/image'
-import { UBER_EATS_URL, INSTAGRAM_URL, PHONE, PHONE_HREF, ADDRESS, GOOGLE_URL } from '@/data/menu'
-import { PhoneIcon, CameraIcon, MapPinIcon, MailIcon, ExternalLinkIcon } from '@/components/ui/Icons'
+import { UBER_EATS_URL, INSTAGRAM_URL, TIKTOK_URL, PHONE, PHONE_HREF, ADDRESS, GOOGLE_URL, EMAIL, EMAIL_HREF } from '@/data/menu'
+import { Phone, Camera, MapPin, Mail, ExternalLink } from 'lucide-react'
+import { TikTokIcon } from '@/components/ui/Icons'
 
 const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
@@ -86,8 +87,17 @@ export default function Footer() {
                   href={PHONE_HREF}
                   className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold"
                 >
-                  <PhoneIcon size={14} className="text-brand-gold/40" />
+                  <Phone size={14} className="text-brand-gold/40" />
                   {PHONE}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={EMAIL_HREF}
+                  className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold"
+                >
+                  <Mail size={14} className="text-brand-gold/40" />
+                  {EMAIL}
                 </a>
               </li>
               <li>
@@ -97,8 +107,19 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold social-icon"
                 >
-                  <CameraIcon size={14} className="text-brand-gold/40" />
+                  <Camera size={14} className="text-brand-gold/40" />
                   @wherestheburger
+                </a>
+              </li>
+              <li>
+                <a
+                  href={TIKTOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold social-icon"
+                >
+                  <TikTokIcon size={14} className="text-brand-gold/40" />
+                  @wheres.the.burger
                 </a>
               </li>
               <li>
@@ -108,7 +129,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold social-icon"
                 >
-                  <ExternalLinkIcon size={14} className="text-brand-gold/40" />
+                  <ExternalLink size={14} className="text-brand-gold/40" />
                   Uber Eats
                 </a>
               </li>
@@ -119,17 +140,8 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold"
                 >
-                  <MapPinIcon size={14} className="text-brand-gold/40" />
+                  <MapPin size={14} className="text-brand-gold/40" />
                   {ADDRESS}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:info@whereistheburger.ca"
-                  className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold"
-                >
-                  <MailIcon size={14} className="text-brand-gold/40" />
-                  Catering Inquiries
                 </a>
               </li>
             </ul>
@@ -148,7 +160,7 @@ export default function Footer() {
             className="inline-flex items-center gap-1.5 text-xs text-white/20 transition-colors duration-200 hover:text-white/40"
           >
             Powered by Praxis Innovations
-            <ExternalLinkIcon size={10} />
+            <ExternalLink size={10} />
           </a>
         </div>
       </div>

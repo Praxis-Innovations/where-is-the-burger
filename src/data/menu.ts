@@ -1,12 +1,15 @@
 import type { MenuItem, MenuCategoryMeta, Review } from '@/types'
 
 export const INSTAGRAM_URL = 'https://www.instagram.com/wherestheburger/'
+export const TIKTOK_URL = 'https://www.tiktok.com/@wheres.the.burger'
 export const GOOGLE_URL = 'https://share.google/vrxAWnZ1oSgagzieF'
 export const UBER_EATS_URL =
   'https://www.ubereats.com/ca/store/wheres-the-burger/HDMbzKirRs2BntrHkijcgg'
 export const ADDRESS = '1300 Steeles Ave E, Brampton, ON L6T 4T2'
 export const PHONE = '647-395-9091'
 export const PHONE_HREF = 'tel:+16473959091'
+export const EMAIL = 'sukhdeep87@gmail.com'
+export const EMAIL_HREF = 'mailto:sukhdeep87@gmail.com'
 
 export const GOOGLE_MAPS_EMBED_URL =
   'https://maps.google.com/maps?q=1300+Steeles+Ave+E,+Brampton,+ON+L6T+4T2&z=15&output=embed'
