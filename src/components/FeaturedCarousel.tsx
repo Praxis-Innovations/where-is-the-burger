@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import Image from 'next/image'
 import { useReducedMotion } from 'framer-motion'
 import { featuredItems, UBER_EATS_URL } from '@/data/menu'
@@ -15,32 +15,54 @@ export default function FeaturedCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
   const reduceMotion = useReducedMotion()
 
-  useEffect(() => {
-    if (reduceMotion) return
-    const track = trackRef.current
-    if (!track) return
-
-    const advance = () => {
-      if (isPausedRef.current) return
-      const nextIndex = (activeIndex + 1) % featuredItems.length
-      setActiveIndex(nextIndex)
-      const cardWidth = track.scrollWidth / featuredItems.length
-      track.scrollTo({
-        left: nextIndex * cardWidth,
-        behavior: 'smooth',
-      })
-    }
-
-    const id = setInterval(advance, 4500)
-    return () => clearInterval(id)
-  }, [activeIndex, reduceMotion])
-
-  const handleDotClick = (i: number) => {
-    setActiveIndex(i)
+  const scrollToIndex = useCallback((i: number) => {
     const track = trackRef.current
     if (!track) return
     const cardWidth = track.scrollWidth / featuredItems.length
     track.scrollTo({ left: i * cardWidth, behavior: 'smooth' })
+  }, [])
+
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+
+    let rafId: number
+    const handleScroll = () => {
+      cancelAnimationFrame(rafId)
+      rafId = requestAnimationFrame(() => {
+        const cardWidth = track.scrollWidth / featuredItems.length
+        if (cardWidth === 0) return
+        const newIndex = Math.round(track.scrollLeft / cardWidth)
+        const clamped = Math.max(0, Math.min(newIndex, featuredItems.length - 1))
+        setActiveIndex(prev => (prev !== clamped ? clamped : prev))
+      })
+    }
+
+    track.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      track.removeEventListener('scroll', handleScroll)
+      cancelAnimationFrame(rafId)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (reduceMotion) return
+
+    const id = setInterval(() => {
+      if (isPausedRef.current) return
+      setActiveIndex(prev => {
+        const next = (prev + 1) % featuredItems.length
+        scrollToIndex(next)
+        return next
+      })
+    }, 4500)
+
+    return () => clearInterval(id)
+  }, [activeIndex, reduceMotion, scrollToIndex])
+
+  const handleDotClick = (i: number) => {
+    setActiveIndex(i)
+    scrollToIndex(i)
   }
 
   return (
@@ -73,7 +95,9 @@ export default function FeaturedCarousel() {
             onMouseEnter={() => { isPausedRef.current = true }}
             onMouseLeave={() => { isPausedRef.current = false }}
             onTouchStart={() => { isPausedRef.current = true }}
-            onTouchEnd={() => { isPausedRef.current = false }}
+            onTouchEnd={() => {
+              setTimeout(() => { isPausedRef.current = false }, 2000)
+            }}
             role="region"
             aria-label="Featured menu items carousel"
           >
