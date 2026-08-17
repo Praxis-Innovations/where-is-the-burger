@@ -19,7 +19,7 @@ const placeholderIcons: Record<string, typeof Droplets> = {
 function AnimatedPlaceholder({ itemId }: { itemId: string }) {
   const Icon = placeholderIcons[itemId] ?? CupSoda
   return (
-    <div className="relative aspect-[16/9] flex-shrink-0 bg-gradient-to-br from-brand-dark-800 to-brand-dark flex items-center justify-center overflow-hidden">
+    <div className="relative aspect-[4/3] flex-shrink-0 bg-gradient-to-br from-brand-dark-800 to-brand-dark flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03]" style={{ background: 'radial-gradient(circle, #E5A100 0%, transparent 70%)' }} />
       <div className="animate-pulse">
         <Icon size={64} className="text-brand-gold/30" strokeWidth={1.5} />
@@ -62,19 +62,19 @@ export default function MenuCard({ item }: MenuCardProps) {
 
           {/* Food photo or animated placeholder */}
           {item.image ? (
-            <div className="card-image relative aspect-[16/9] overflow-hidden flex-shrink-0">
+            <div className="card-image relative aspect-[4/3] overflow-hidden flex-shrink-0 bg-brand-dark-800">
               <Image
                 src={item.image}
                 alt={`${item.name} — ${item.description.slice(0, 80)}...`}
                 fill
-                className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-contain transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"
+                sizes="(max-width: 640px) 75vw, (max-width: 1024px) 50vw, 33vw"
                 loading="lazy"
               />
               <div
                 className="absolute inset-0"
                 style={{
-                  background: 'linear-gradient(to top, rgba(17,17,17,0.8) 0%, transparent 50%)',
+                  background: 'linear-gradient(to top, rgba(17,17,17,0.6) 0%, transparent 40%)',
                 }}
                 aria-hidden="true"
               />
@@ -154,18 +154,17 @@ export default function MenuCard({ item }: MenuCardProps) {
               {item.name}
             </h3>
 
-            {/* Description with inline See more */}
+            {/* Description with See more below */}
             <div className="flex-1">
               <p className="text-white/50 text-sm leading-relaxed line-clamp-2">
                 {item.description}
-                {' '}
-                <button
-                  onClick={() => setExpanded(true)}
-                  className="text-brand-gold font-semibold hover:text-brand-gold-light transition-colors inline"
-                >
-                  See more
-                </button>
               </p>
+              <button
+                onClick={() => setExpanded(true)}
+                className="text-brand-gold text-xs font-semibold mt-1 hover:text-brand-gold-light transition-colors"
+              >
+                See more
+              </button>
             </div>
 
             {/* Price */}
