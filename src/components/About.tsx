@@ -72,13 +72,13 @@ export default function About() {
           </RevealSection>
 
           {/* Right — owner image collage */}
-          <RevealSection delayMs={150} className="relative">
+          <RevealSection delayMs={150} className="relative order-first lg:order-none">
             {/* Double-bezel outer shell */}
             <div className="rounded-[2rem] p-2 bg-white/[0.02] ring-1 ring-white/10">
               {/* Inner core */}
               <div className="rounded-[1.625rem] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)]">
                 {/* Main image — owner with burger */}
-                <div className="relative aspect-[4/3]">
+                <div className="relative aspect-[16/10] sm:aspect-[4/3]">
                   <Image
                     src="/images/owner/766074874_18162072016453569_3928546251123518087_n.jpg"
                     alt="Owner of Where's the Burger holding one of the signature burgers"
@@ -125,11 +125,11 @@ export default function About() {
 
             {/* Gold accent decoration */}
             <div
-              className="absolute -top-4 -left-4 h-24 w-24 rounded-full border border-brand-gold/15 opacity-60"
+              className="hidden sm:block absolute -top-4 -left-4 h-24 w-24 rounded-full border border-brand-gold/15 opacity-60"
               aria-hidden="true"
             />
             <div
-              className="absolute -top-2 -left-2 h-12 w-12 rounded-full border border-brand-gold/25"
+              className="hidden sm:block absolute -top-2 -left-2 h-12 w-12 rounded-full border border-brand-gold/25"
               aria-hidden="true"
             />
           </RevealSection>

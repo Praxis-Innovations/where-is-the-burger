@@ -8,14 +8,18 @@ export const ADDRESS = '1300 Steeles Ave E, Brampton, ON L6T 4T2'
 export const PHONE = '647-395-9091'
 export const PHONE_HREF = 'tel:+16473959091'
 
+export const GOOGLE_MAPS_EMBED_URL =
+  'https://maps.google.com/maps?q=1300+Steeles+Ave+E,+Brampton,+ON+L6T+4T2&z=15&output=embed'
+export const GOOGLE_MAPS_DIRECTIONS_URL =
+  'https://www.google.com/maps/dir/?api=1&destination=1300+Steeles+Ave+E,+Brampton,+ON+L6T+4T2'
+
 export const hours = [
-  { day: 'Monday', time: 'Closed' },
-  { day: 'Tuesday', time: 'Closed' },
   { day: 'Wednesday', time: '3:00 PM – 12:00 AM' },
   { day: 'Thursday', time: '3:00 PM – 12:00 AM' },
   { day: 'Friday', time: '3:00 PM – 1:00 AM' },
   { day: 'Saturday', time: '3:00 PM – 1:00 AM' },
   { day: 'Sunday', time: '3:00 PM – 12:00 AM' },
+  { day: 'Mon – Tue', time: 'Closed' },
 ]
 
 export const menuCategories: MenuCategoryMeta[] = [

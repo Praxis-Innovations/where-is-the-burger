@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { menuItems, menuCategories, UBER_EATS_URL } from '@/data/menu'
 import { staggerContainerVariants, staggerChildVariants } from '@/lib/animations'
@@ -21,8 +21,14 @@ const iconMap: Record<string, typeof LeafIcon> = {
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState<MenuCategory>('veg-burgers')
   const reduceMotion = useReducedMotion()
+  const tabContainerRef = useRef<HTMLDivElement>(null)
 
   const filtered = menuItems.filter((item) => item.category === activeCategory)
+
+  const handleCategoryClick = useCallback((id: MenuCategory, e: React.MouseEvent<HTMLButtonElement>) => {
+    setActiveCategory(id)
+    e.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+  }, [])
 
   return (
     <section
@@ -47,9 +53,10 @@ export default function Menu() {
           />
         </RevealSection>
 
-        {/* Category tabs — scrollable on mobile */}
+        {/* Category tabs — scrollable on mobile, centered on desktop */}
         <RevealSection delayMs={80} className="mb-6">
           <div
+            ref={tabContainerRef}
             role="tablist"
             aria-label="Menu categories"
             className="flex gap-2 overflow-x-auto pb-2 no-scrollbar justify-start md:justify-center"
@@ -64,7 +71,7 @@ export default function Menu() {
                   aria-selected={isActive}
                   aria-controls={`panel-${cat.id}`}
                   id={`tab-${cat.id}`}
-                  onClick={() => setActiveCategory(cat.id)}
+                  onClick={(e) => handleCategoryClick(cat.id, e)}
                   className={`
                     flex-shrink-0 flex items-center gap-1.5 rounded-full px-4 sm:px-5 py-2 sm:py-2.5
                     text-sm sm:text-base font-semibold transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]
@@ -79,7 +86,7 @@ export default function Menu() {
           </div>
         </RevealSection>
 
-        {/* Menu grid */}
+        {/* Menu items */}
         <div
           id={`panel-${activeCategory}`}
           role="tabpanel"
@@ -90,13 +97,13 @@ export default function Menu() {
             variants={reduceMotion ? {} : staggerContainerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible sm:snap-none sm:pb-0 md:gap-5"
           >
             {filtered.map((item) => (
               <motion.div
                 key={item.id}
                 variants={reduceMotion ? {} : staggerChildVariants}
-                className="flex"
+                className="flex snap-center flex-shrink-0 w-[75vw] max-w-[300px] sm:w-auto sm:max-w-none sm:flex-shrink-[unset]"
               >
                 <MenuCard item={item} />
               </motion.div>
