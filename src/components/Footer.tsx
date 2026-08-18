@@ -105,7 +105,7 @@ export default function Footer() {
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold social-icon"
+                  className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold"
                 >
                   <Camera size={14} className="text-brand-gold/40" />
                   @wherestheburger
@@ -116,7 +116,7 @@ export default function Footer() {
                   href={TIKTOK_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold social-icon"
+                  className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold"
                 >
                   <TikTokIcon size={14} className="text-brand-gold/40" />
                   @wheres.the.burger
@@ -127,7 +127,7 @@ export default function Footer() {
                   href={UBER_EATS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold social-icon"
+                  className="flex items-center gap-2 text-sm text-white/50 transition-colors duration-200 hover:text-brand-gold"
                 >
                   <ExternalLink size={14} className="text-brand-gold/40" />
                   Uber Eats
@@ -153,15 +153,30 @@ export default function Footer() {
           <p className="text-xs text-white/25">
             &copy; {new Date().getFullYear()} Where&apos;s the Burger. All rights reserved.
           </p>
-          <a
-            href="https://praxisinnovations.ca/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs text-white/20 transition-colors duration-200 hover:text-white/40"
-          >
-            Powered by Praxis Innovations
-            <ExternalLink size={10} />
-          </a>
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <p className="text-xs text-white/20">
+              Food Truck icon by{' '}
+              <a
+                href="https://thenounproject.com/browse/icons/term/food-truck/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-white/40 transition-colors duration-200"
+                title="Food Truck Icons"
+              >
+                Rafael Farias Leão
+              </a>{' '}
+              (CC BY 3.0)
+            </p>
+            <a
+              href="https://praxisinnovations.ca/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-white/20 transition-colors duration-200 hover:text-white/40"
+            >
+              Powered by Praxis Innovations
+              <ExternalLink size={10} />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

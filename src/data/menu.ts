@@ -29,7 +29,7 @@ export const menuCategories: MenuCategoryMeta[] = [
   { id: 'veg-burgers', label: 'Veg Burgers', emoji: 'leaf' },
   { id: 'nonveg-burgers', label: 'Non-Veg Burgers', emoji: 'drumstick' },
   { id: 'sides', label: 'Sides', emoji: 'fries' },
-  { id: 'desserts', label: 'Desserts', emoji: 'bread' },
+  { id: 'desserts', label: 'One and Only Dessert', emoji: 'bread' },
   { id: 'drinks', label: 'Drinks', emoji: 'cup' },
 ]
 
@@ -40,7 +40,7 @@ export const menuItems: MenuItem[] = [
     price: 11.0,
     description:
       'A re-crafted potato patty topped with creamy tangy sauce, fresh lettuce, tomatoes, onions, guacamole, creamy tandoori sauce, house-made Tami Rami sauce, and fresh cilantro in a soft toasted brioche bun.',
-    image: '/images/food/mash-potash.jpeg',
+    image: '/images/food/mash-potash-veg.jpeg',
     category: 'veg-burgers',
     isVegetarian: true,
     spiceLevel: 'medium',
@@ -53,7 +53,7 @@ export const menuItems: MenuItem[] = [
     price: 13.0,
     description:
       'A crispy handcrafted vegetable patty made from a flavorful blend of fresh vegetables, topped with crisp iceberg lettuce, onion rings, creamy tandoori sauce, jalapeños, house-made Tami Rami sauce, fresh cilantro.',
-    image: '/images/food/green-bean.jpeg',
+    image: '/images/food/green-bean-veg.jpeg',
     category: 'veg-burgers',
     isVegetarian: true,
     spiceLevel: 'hot',
@@ -64,7 +64,7 @@ export const menuItems: MenuItem[] = [
     price: 13.5,
     description:
       'A golden crispy crumbled paneer patty topped with fresh lettuce, dry roasted onions, creamy tandoori sauce, house-made Tami Rami sauce, and fresh cilantro in a soft toasted brioche bun.',
-    image: '/images/food/paneer-pioneer.jpeg',
+    image: '/images/food/paneer-pioneer-veg.jpeg',
     category: 'veg-burgers',
     isVegetarian: true,
     spiceLevel: 'medium',
@@ -76,8 +76,8 @@ export const menuItems: MenuItem[] = [
     name: 'Little Champ Burger',
     price: 6.0,
     description:
-      'Two slices of cheese layered with crisp lettuce, fresh tomatoes and onions, served on a soft brioche bun.',
-    image: '/images/food/little-champ.jpeg',
+      'Big smiles in a little burger! Two slices of cheese layered with crisp lettuce, fresh tomatoes and onions, served on a soft brioche bun.',
+    image: undefined,
     category: 'veg-burgers',
     isVegetarian: true,
     spiceLevel: 'mild',
@@ -88,7 +88,7 @@ export const menuItems: MenuItem[] = [
     price: 14.0,
     description:
       'A golden buttery crispy chicken patty topped with dry roasted onions, jalapeños, creamy tandoori sauce, fresh lettuce, house-made Tami Rami sauce, and fresh cilantro in a soft toasted brioche bun.',
-    image: '/images/food/munchy-crunchy.jpeg',
+    image: '/images/food/munchy-crunchy-non-veg.jpeg',
     category: 'nonveg-burgers',
     isVegetarian: false,
     spiceLevel: 'hot',
@@ -101,20 +101,20 @@ export const menuItems: MenuItem[] = [
     price: 14.0,
     description:
       'A golden crispy 5-spice infused chicken patty topped with creamy tangy sauce, fresh lettuce, tomatoes, onions, guacamole, creamy tandoori sauce, house-made Tami Rami sauce, and fresh cilantro.',
-    image: '/images/food/chickly-pickly.jpeg',
+    image: '/images/food/chickly-pickly-non-veg.jpeg',
     category: 'nonveg-burgers',
     isVegetarian: false,
     spiceLevel: 'medium',
   },
   {
     id: 'dirty-fries',
-    name: 'Dirty Fries',
+    name: 'Dirty Fries - Paneer or Chicken',
     price: 13.0,
     description:
-      'Crispy golden fries piled high with your choice of seasoned paneer or chicken, layered with melted cheese, signature sauces, onions, tomatoes, cilantro, crispy onions and jalapeños. (Paneer or Chicken)',
-    image: '/images/food/dirty-fries.jpeg',
+      'Crispy golden fries piled high with your choice of seasoned paneer or chicken, layered with melted cheese, signature sauces, onions, tomatoes, cilantro, crispy onions and jalapeños.',
+    image: '/images/food/dirty-fries-veg-and-non-veg.jpeg',
     category: 'sides',
-    isVegetarian: false,
+    isVegetarian: 'both',
     spiceLevel: 'hot',
     isFeatured: true,
     featuredTagline: 'Dangerously loaded fries',
@@ -132,33 +132,33 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: 'dreamy-creamy-pistachio',
-    name: 'Dreamy Creamy Sando — Pistachio',
+    name: 'Dreamy Creamy Sandos Pistachio',
     price: 8.5,
     description:
       'A perfectly toasted Japanese milk bread loaded with silky pistachio cream, finished with pistachio glaze and topped with crunchy roasted pistachios.',
-    image: '/images/food/dreamy-creamy-pistachio.jpeg',
+    image: '/images/food/Dreamy-Creamy-Sandos-Pistachio.jpeg',
     category: 'desserts',
     isVegetarian: true,
     spiceLevel: 'mild',
   },
   {
     id: 'dreamy-creamy-dulce',
-    name: 'Dreamy Creamy Sando — Dulce de Leche',
+    name: 'Dreamy Creamy Sando Dulche de Leche',
     price: 8.5,
     description:
-      'A perfectly toasted Japanese milk bread loaded with silky Dulce de Leche cream, finished with caramel glaze and topped with crunchy roasted sliced almonds.',
-    image: '/images/food/dreamy-creamy-pistachio.jpeg',
+      'A perfectly toasted Japanese milk bread loaded with silky Dulche de Leche cream, finished with caramel glaze and topped with crunchy roasted sliced almonds.',
+    image: '/images/food/Dreamy-Creamy-Sando-Dulche-de-Leche.jpeg',
     category: 'desserts',
     isVegetarian: true,
     spiceLevel: 'mild',
   },
   {
     id: 'dreamy-creamy-biscoff',
-    name: 'Dreamy Creamy Sando — Biscoff',
+    name: 'Dreamy Creamy Sando Biscoff',
     price: 8.5,
     description:
       'A perfectly toasted Japanese milk bread loaded with smooth biscoff cream, finished with biscoff glaze, and topped with biscoff crumbs.',
-    image: '/images/food/dreamy-creamy-biscoff.jpeg',
+    image: '/images/food/Dreamy-Creamy-Sando-Biscoff.jpeg',
     category: 'desserts',
     isVegetarian: true,
     spiceLevel: 'mild',
@@ -170,8 +170,8 @@ export const menuItems: MenuItem[] = [
     name: 'Mango-Ish Shake',
     price: 7.5,
     description:
-      'Thick, creamy and bursting with mango goodness! Layered with rich mango glaze, topped with fluffy whipped cream and a generous sprinkle of pistachio crumbles.',
-    image: '/images/food/mango-shake.jpeg',
+      'Thick, creamy and bursting with mango goodness! Our Mango Shake is layered with rich mango glaze, topped with fluffy whipped cream and a generous sprinkle of pistachio crumbles.',
+    image: '/images/food/Mango-Ish-Shake.jpeg',
     category: 'drinks',
     isVegetarian: true,
     spiceLevel: 'mild',
@@ -209,33 +209,70 @@ export const menuItems: MenuItem[] = [
 
 export const featuredItems = menuItems.filter((item) => item.isFeatured)
 
-export const reviews: Review[] = [
+const allReviews: Review[] = [
   {
     id: '1',
-    author: 'Priya R.',
+    author: 'Sukhveer Waraich',
     rating: 5,
-    text: "Best Indian-fusion burger in the GTA. The Paneer Pioneer changed everything I thought I knew about street food. That Tami Rami sauce is UNREAL.",
+    text: "I just moved from Vancouver and tried a lot of food trucks in Brampton but this place is best in Brampton. I had their Green Bean burger, Dreamy Creamy Sandos and Mango shake. Burger was super delightful. Will always come here for burger and shakes.",
     source: 'Google',
   },
   {
     id: '2',
-    author: 'Jake M.',
+    author: 'Divyadeep Maan',
     rating: 5,
-    text: "Munchy Crunchy is everything. I came back three days in a row. The brioche bun, the crunch, the sauces — it all hits different.",
+    text: "Fresh, flavorful, and absolutely delicious. The burgers are outstanding, the desserts are amazing, and the unique menu names make the whole experience even more memorable. Highly recommend!",
     source: 'Google',
   },
   {
     id: '3',
-    author: 'Aisha T.',
+    author: 'Neena D.',
     rating: 5,
-    text: "Came for the burger, stayed for the Dreamy Creamy Sando. The Biscoff one is absolutely dangerous. Where has this been all my life??",
+    text: "Just tried this burger joint and all I can say is that I was pleasantly surprised. This place is a diamond in the rough. I had the paneer pioneer burger, dulche de leche sandos and the paneer popcorn. Definitely coming back here again!",
     source: 'Google',
   },
   {
     id: '4',
-    author: 'Carlos V.',
+    author: 'Navdeep Chahal',
     rating: 5,
-    text: "Dirty Fries with chicken is a full meal. Don't sleep on the Paneer Popcorn either — it's the best app I've had from a food truck. Period.",
+    text: "Absolutely loved the burger! The chicken was crispy and juicy, and the toppings were fresh and flavorful. Everything tasted well balanced, and the portion size was satisfying. Definitely one of the best burger spots in Brampton.",
+    source: 'Google',
+  },
+  {
+    id: '5',
+    author: 'Simran Dhanjal',
+    rating: 5,
+    text: "The dreamy creamy sandos were amazing, I got the biscoff one and it was light, creamy, and flavourful. The munchy crunchy burger was one of the best burgers I've ever had. I highly recommend coming here.",
+    source: 'Google',
+  },
+  {
+    id: '6',
+    author: 'Harpreet Bajwa',
+    rating: 5,
+    text: "The food here is absolutely delicious! Every dish we tried was bursting with flavor and cooked to perfection. Highly recommend the paneer popcorn — it's a must try for anyone visiting!!!",
+    source: 'Google',
+  },
+  {
+    id: '7',
+    author: 'Chanpreet Gill',
+    rating: 5,
+    text: "The burger was delicious and well-made. Great taste, fresh ingredients, and friendly service. Definitely worth a visit if you're looking for a good burger. Highly recommended!",
+    source: 'Google',
+  },
+  {
+    id: '8',
+    author: 'Harmandeep Kaur',
+    rating: 5,
+    text: "We have tried loaded chicken (butterfly fries) for the first time from this place. Really liked it, totally different concept. The cheese pull was awesome. Definitely going there again.",
+    source: 'Google',
+  },
+  {
+    id: '9',
+    author: 'Sameer Ahuja',
+    rating: 5,
+    text: "Best food truck in the city. Paneer popcorn were so good and the burgers are amazing. Definitely will come back.",
     source: 'Google',
   },
 ]
+
+export const reviews: Review[] = allReviews

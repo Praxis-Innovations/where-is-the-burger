@@ -85,7 +85,7 @@ export default function FeaturedCarousel() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-black py-12 md:py-16 overflow-hidden"
+      className="relative bg-black py-8 md:py-10 overflow-hidden"
       aria-labelledby="featured-heading"
     >
       {/* Gold glow right */}
@@ -96,7 +96,7 @@ export default function FeaturedCarousel() {
       />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <RevealSection className="mb-10 flex flex-col items-center">
+        <RevealSection className="mb-6 flex flex-col items-center">
           <SectionHeading
             eyebrow="Fan Favourites"
             title="The Greatest Hits"
@@ -109,7 +109,7 @@ export default function FeaturedCarousel() {
         <RevealSection delayMs={80}>
           <div
             ref={trackRef}
-            className="carousel-track flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4"
+            className="carousel-track flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 lg:grid lg:grid-cols-4 lg:overflow-visible lg:snap-none lg:pb-0"
             onMouseEnter={() => { isPausedRef.current = true }}
             onMouseLeave={() => { isPausedRef.current = false }}
             onTouchStart={() => { isPausedRef.current = true }}
@@ -122,20 +122,20 @@ export default function FeaturedCarousel() {
             {featuredItems.map((item, i) => (
               <div
                 key={item.id}
-                className="snap-center flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[45vw] lg:w-[32%]"
+                className="snap-center flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[45vw] lg:w-auto"
               >
                 {/* Card — double bezel */}
                 <div className="group rounded-[2rem] p-2 bg-white/[0.025] ring-1 ring-white/10 h-full">
-                  <div className="rounded-[1.625rem] bg-brand-dark-800 shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)] overflow-hidden h-full flex flex-col">
+                  <div className="rounded-[1.625rem] bg-black shadow-[inset_0_1px_1px_rgba(255,255,255,0.07)] overflow-hidden h-full flex flex-col">
 
                     {/* Large food photo */}
                     {item.image && (
-                      <div className="relative aspect-[3/4] overflow-hidden flex-shrink-0">
+                      <div className="relative aspect-[3/4] overflow-hidden flex-shrink-0 bg-black">
                         <Image
                           src={item.image}
                           alt={`${item.name} — ${item.featuredTagline ?? item.description.slice(0, 60)}`}
                           fill
-                          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.04]"
+                          className="object-contain object-top"
                           sizes="(max-width: 640px) 85vw, (max-width: 1024px) 60vw, 33vw"
                           loading={i === 0 ? 'eager' : 'lazy'}
                         />
@@ -144,7 +144,7 @@ export default function FeaturedCarousel() {
                           className="absolute inset-0"
                           style={{
                             background:
-                              'linear-gradient(to top, rgba(17,17,17,1) 0%, rgba(17,17,17,0.4) 40%, transparent 70%)',
+                              'linear-gradient(to top, #000 0%, #000 20%, rgba(0,0,0,0.7) 35%, transparent 55%)',
                           }}
                           aria-hidden="true"
                         />
@@ -157,20 +157,25 @@ export default function FeaturedCarousel() {
                         </div>
 
                         {/* Veg/Non-veg badge */}
-                        <div className="absolute top-4 right-4">
-                          <span
-                            className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold ${
-                              item.isVegetarian
-                                ? 'bg-green-900/70 text-green-400 border border-green-500/30'
-                                : 'bg-orange-900/70 text-orange-400 border border-orange-500/30'
-                            }`}
-                          >
-                            {item.isVegetarian ? (
-                              <><Leaf size={13} /> Veg</>
-                            ) : (
-                              <><Drumstick size={13} /> Chicken</>
-                            )}
-                          </span>
+                        <div className="absolute top-4 right-4 flex flex-col gap-1 items-end">
+                          {item.isVegetarian === 'both' ? (
+                            <>
+                              <span className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold bg-green-900/70 text-green-400 border border-green-500/30">
+                                <Leaf size={13} /> Veg
+                              </span>
+                              <span className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold bg-orange-900/70 text-orange-400 border border-orange-500/30">
+                                <Drumstick size={13} /> Non-Veg
+                              </span>
+                            </>
+                          ) : item.isVegetarian ? (
+                            <span className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold bg-green-900/70 text-green-400 border border-green-500/30">
+                              <Leaf size={13} /> Veg
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold bg-orange-900/70 text-orange-400 border border-orange-500/30">
+                              <Drumstick size={13} /> Non-Veg
+                            </span>
+                          )}
                         </div>
 
                         {/* Bottom overlay content */}
@@ -209,9 +214,9 @@ export default function FeaturedCarousel() {
             ))}
           </div>
 
-          {/* Dot indicators */}
+          {/* Dot indicators — mobile/tablet only; hidden on desktop where all cards are visible */}
           <div
-            className="flex items-center justify-center gap-2 mt-6"
+            className="lg:hidden flex items-center justify-center gap-2 mt-6"
             role="tablist"
             aria-label="Carousel position"
           >

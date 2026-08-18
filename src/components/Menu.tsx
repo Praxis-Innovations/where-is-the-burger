@@ -40,7 +40,7 @@ export default function Menu() {
   return (
     <section
       id="menu"
-      className="relative bg-brand-dark py-10 md:py-14"
+      className="relative bg-black py-8 md:py-10"
       aria-labelledby="menu-heading"
     >
       {/* Subtle gold glow top-left */}

@@ -10,7 +10,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative bg-brand-dark py-12 md:py-16 overflow-hidden"
+      className="relative bg-brand-dark py-8 md:py-10 overflow-hidden"
       aria-labelledby="contact-heading"
     >
       {/* Glow */}
@@ -21,7 +21,7 @@ export default function Contact() {
       />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <RevealSection className="mb-10 flex flex-col items-center">
+        <RevealSection className="mb-6 flex flex-col items-center">
           <SectionHeading
             eyebrow="Get in Touch"
             title="Let's Talk Burgers"

@@ -14,7 +14,7 @@ export interface MenuItem {
   description: string
   image?: string
   category: MenuCategory
-  isVegetarian: boolean
+  isVegetarian: boolean | 'both'
   spiceLevel?: SpiceLevel
   isFeatured?: boolean
   featuredTagline?: string
