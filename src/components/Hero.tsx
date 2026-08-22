@@ -1,6 +1,6 @@
 'use client'
 
-import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   heroHeadlineVariants,
@@ -9,11 +9,6 @@ import {
 } from '@/lib/animations'
 import { UBER_EATS_URL, PHONE, PHONE_HREF } from '@/data/menu'
 import { Phone } from 'lucide-react'
-
-const FoodTruckSVG = dynamic(() => import('./FoodTruckSVG'), {
-  ssr: false,
-  loading: () => <div className="h-40 w-full" aria-hidden="true" />,
-})
 
 export default function Hero() {
   const reduceMotion = useReducedMotion()
@@ -49,80 +44,84 @@ export default function Hero() {
         {/* Top spacer for navbar */}
         <div className="h-16 flex-shrink-0" />
 
-        {/* Food truck animation */}
-        <div className="flex-shrink-0 px-4 pt-1 sm:pt-2 max-h-[30vh]">
-          <FoodTruckSVG className="mx-auto max-h-[28vh]" />
-        </div>
-
-        {/* Hero text content */}
-        <div className="flex flex-col items-center px-4 pb-2 pt-2 text-center sm:pt-4">
+        {/* Hero content */}
+        <div className="flex flex-col items-center px-4 pb-2 pt-4 text-center">
           {/* Eyebrow tag */}
           <motion.div
             variants={reduceMotion ? {} : heroHeadlineVariants}
             initial="hidden"
             animate="visible"
           >
-            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-brand-gold/30 px-3 py-1 text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold/70">
+            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand-gold/30 px-3 py-1 text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold/70">
               GTA&apos;s Rock-n-Roll Street Food
             </span>
           </motion.div>
 
-          {/* Main headline */}
-          <motion.h1
-            variants={reduceMotion ? {} : heroHeadlineVariants}
-            initial="hidden"
-            animate="visible"
-            className="font-bangers text-[clamp(2.5rem,10vw,7rem)] leading-[0.95] tracking-wide"
-            style={{ willChange: 'transform, opacity' }}
-          >
-            <span className="text-gold-gradient">Where&apos;s</span>{' '}
-            <span className="text-white">the</span>{' '}
-            <br className="hidden sm:block" />
-            <span className="text-brand-gold">Burger?</span>
-          </motion.h1>
+          {/* Logo + description side by side */}
+          <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12 lg:text-left">
+            {/* Big logo */}
+            <motion.div
+              variants={reduceMotion ? {} : heroHeadlineVariants}
+              initial="hidden"
+              animate="visible"
+              className="flex justify-center lg:justify-end"
+              style={{ willChange: 'transform, opacity' }}
+            >
+              <h1 className="sr-only">Where&apos;s the Burger?</h1>
+              <Image
+                src="/images/logo/logo-full.png"
+                alt="Where's the Burger"
+                width={685}
+                height={423}
+                priority
+                className="h-auto w-full max-w-xs sm:max-w-sm lg:max-w-md"
+              />
+            </motion.div>
 
-          {/* Subheadline */}
-          <motion.p
-            variants={reduceMotion ? {} : heroSublineVariants}
-            initial="hidden"
-            animate="visible"
-            className="mt-3 max-w-md text-sm sm:text-base text-white/60 leading-relaxed"
-            style={{ willChange: 'transform, opacity' }}
-          >
-            Indian-Fusion Street Food That Rocks.
-            <br />
-            Brioche buns. House-made sauces. Zero apologies.
-          </motion.p>
+            {/* Subheadline + description */}
+            <div className="flex flex-col items-center lg:items-start">
+              <motion.p
+                variants={reduceMotion ? {} : heroSublineVariants}
+                initial="hidden"
+                animate="visible"
+                className="max-w-md text-sm sm:text-base text-white/60 leading-relaxed"
+                style={{ willChange: 'transform, opacity' }}
+              >
+                Indian-Fusion Street Food That Rocks.
+                <br />
+                Brioche buns. House-made sauces. Zero apologies.
+              </motion.p>
 
-          {/* Welcome description */}
-          <motion.div
-            variants={reduceMotion ? {} : heroSublineVariants}
-            initial="hidden"
-            animate="visible"
-            className="mt-4 max-w-xl text-sm sm:text-base text-white/50 leading-relaxed space-y-3"
-            style={{ willChange: 'transform, opacity' }}
-          >
-            <p>
-              Welcome to Where&apos;s The Burger — where bold flavours, stacked
-              burgers, loaded Dirty Fries and dreamy desserts come together
-              under one roof.
-            </p>
-            <p>
-              We&apos;re here to make food that&apos;s fun, flavour-packed and
-              seriously satisfying. From our signature burgers to our Dirty
-              Fries and Dreamy Creamy Sandos, everything on the menu is made
-              to give you something worth coming back for.
-            </p>
-            <p>So, if you&apos;ve been wondering Where&apos;s the Burger?</p>
-            <p className="text-brand-gold font-semibold">Your search ends here.</p>
-          </motion.div>
+              <motion.div
+                variants={reduceMotion ? {} : heroSublineVariants}
+                initial="hidden"
+                animate="visible"
+                className="mt-4 max-w-md space-y-3 text-sm sm:text-base text-white/50 leading-relaxed"
+                style={{ willChange: 'transform, opacity' }}
+              >
+                <p>
+                  Welcome to Where&apos;s The Burger — where bold flavours, stacked
+                  burgers, loaded Dirty Fries and dreamy desserts come together
+                  under one roof.
+                </p>
+                <p>
+                  We&apos;re here to make food that&apos;s fun, flavour-packed and
+                  seriously satisfying. From our signature burgers to our Dirty
+                  Fries and Dreamy Creamy Sandos, everything on the menu is made
+                  to give you something worth coming back for.
+                </p>
+                <p>So, if you&apos;ve been wondering Where&apos;s the Burger?</p>
+                <p className="text-brand-gold font-semibold">Your search ends here.</p>
+              </motion.div>
+            </div>
+          </div>
 
           {/* CTA buttons */}
           <motion.div
             variants={reduceMotion ? {} : heroCtaVariants}
             initial="hidden"
             animate="visible"
-            className="mt-4 flex flex-wrap items-center justify-center gap-3"
+            className="mt-8 flex flex-wrap items-center justify-center gap-3"
             style={{ willChange: 'transform, opacity' }}
           >
             <a
