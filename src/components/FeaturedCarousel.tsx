@@ -184,8 +184,8 @@ export default function FeaturedCarousel() {
 
                     {/* Card footer */}
                     <div className="flex items-center justify-between p-5">
-                      <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-brand-gold font-bangers text-xl text-black">
-                        {i + 1}
+                      <span className="font-bangers text-2xl text-white">
+                        #{i + 1}
                       </span>
                       <a
                         href={UBER_EATS_URL}

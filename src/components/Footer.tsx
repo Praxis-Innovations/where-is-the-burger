@@ -154,27 +154,21 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Where&apos;s the Burger. All rights reserved.
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-3">
-            <p className="text-xs text-white/20">
-              Food Truck icon by{' '}
-              <a
-                href="https://thenounproject.com/browse/icons/term/food-truck/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-white/40 transition-colors duration-200"
-                title="Food Truck Icons"
-              >
-                Rafael Farias Leão
-              </a>{' '}
-              (CC BY 3.0)
-            </p>
             <a
               href="https://praxisinnovations.ca/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-white/20 transition-colors duration-200 hover:text-white/40"
+              className="inline-flex items-center gap-2 text-sm text-white/35 transition-colors duration-200 hover:text-white/60"
             >
+              <Image
+                src="/images/praxis/praxis-icon.svg"
+                alt=""
+                width={16}
+                height={16}
+                aria-hidden="true"
+              />
               Powered by Praxis Innovations
-              <ExternalLink size={10} />
+              <ExternalLink size={12} />
             </a>
           </div>
         </div>

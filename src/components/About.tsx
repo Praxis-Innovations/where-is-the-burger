@@ -119,25 +119,27 @@ export default function About() {
               </div>
             </div>
             {/* Dot indicators */}
-            <div className="flex items-center justify-center gap-2 mt-3">
-              {ownerImages.map((_, i) => (
-                <button
-                  key={i}
-                  aria-label={`Go to image ${i + 1}`}
-                  onClick={() => {
-                    const track = trackRef.current
-                    if (!track) return
-                    const cardWidth = track.scrollWidth / ownerImages.length
-                    track.scrollTo({ left: i * cardWidth, behavior: 'smooth' })
-                  }}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === activeIndex
-                      ? 'w-6 h-2 bg-brand-gold'
-                      : 'w-2 h-2 bg-white/20'
-                  }`}
-                />
-              ))}
-            </div>
+            {ownerImages.length > 1 && (
+              <div className="flex items-center justify-center gap-2 mt-3">
+                {ownerImages.map((_, i) => (
+                  <button
+                    key={i}
+                    aria-label={`Go to image ${i + 1}`}
+                    onClick={() => {
+                      const track = trackRef.current
+                      if (!track) return
+                      const cardWidth = track.scrollWidth / ownerImages.length
+                      track.scrollTo({ left: i * cardWidth, behavior: 'smooth' })
+                    }}
+                    className={`rounded-full transition-all duration-300 ${
+                      i === activeIndex
+                        ? 'w-6 h-2 bg-brand-gold'
+                        : 'w-2 h-2 bg-white/20'
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
           </RevealSection>
         </div>
       </div>

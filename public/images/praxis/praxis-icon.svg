@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="800" height="800">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="90%" stop-color="#14b8a6" />
+    </linearGradient>
+  </defs>
+
+  <path fill="url(#grad)" fill-rule="evenodd" d="
+    M 500 80 L 920 500 L 500 920 L 80 500 Z
+    M 500 240 L 760 500 L 500 760 L 240 500 Z
+    M 500 240 L 580 160 L 620 200 L 540 280 Z
+    M 380 800 L 420 840 L 500 760 L 460 720 Z
+  "/>
+
+  <path fill="url(#grad)" fill-rule="evenodd" d="
+    M 500 320 L 680 500 L 500 680 L 320 500 Z
+    M 500 420 L 580 500 L 500 580 L 420 500 Z
+  "/>
+</svg>
