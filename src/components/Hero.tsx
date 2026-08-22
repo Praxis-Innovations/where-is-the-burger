@@ -58,13 +58,13 @@ export default function Hero() {
           </motion.div>
 
           {/* Logo + description side by side */}
-          <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12 lg:text-left">
+          <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
             {/* Big logo */}
             <motion.div
               variants={reduceMotion ? {} : heroHeadlineVariants}
               initial="hidden"
               animate="visible"
-              className="flex justify-center lg:justify-end"
+              className="flex justify-center"
               style={{ willChange: 'transform, opacity' }}
             >
               <h1 className="sr-only">Where&apos;s the Burger?</h1>
@@ -74,12 +74,12 @@ export default function Hero() {
                 width={685}
                 height={423}
                 priority
-                className="h-auto w-full max-w-xs sm:max-w-sm lg:max-w-md"
+                className="h-auto w-full max-w-sm sm:max-w-md lg:max-w-xl"
               />
             </motion.div>
 
-            {/* Subheadline + description */}
-            <div className="flex flex-col items-center lg:items-start">
+            {/* Subheadline + description + CTAs */}
+            <div className="flex flex-col items-center text-center">
               <motion.p
                 variants={reduceMotion ? {} : heroSublineVariants}
                 initial="hidden"
@@ -113,56 +113,56 @@ export default function Hero() {
                 <p>So, if you&apos;ve been wondering Where&apos;s the Burger?</p>
                 <p className="text-brand-gold font-semibold">Your search ends here.</p>
               </motion.div>
+
+              {/* CTA buttons */}
+              <motion.div
+                variants={reduceMotion ? {} : heroCtaVariants}
+                initial="hidden"
+                animate="visible"
+                className="mt-6 flex flex-wrap items-center justify-center gap-3"
+                style={{ willChange: 'transform, opacity' }}
+              >
+                <a
+                  href="#menu"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    document.querySelector('#menu')?.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                  className="inline-flex items-center gap-2 rounded-full bg-brand-gold px-6 py-3 text-sm sm:text-base font-bold text-black transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-brand-gold-light active:scale-[0.97] btn-gold-glow"
+                >
+                  See Our Menu
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black/10 text-xs font-normal" aria-hidden="true">
+                    ↓
+                  </span>
+                </a>
+
+                <a
+                  href={UBER_EATS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-brand-gold px-6 py-3 text-sm sm:text-base font-bold text-brand-gold transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-brand-gold hover:text-black active:scale-[0.97]"
+                >
+                  Order on Uber Eats
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-brand-gold/30 text-xs" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              </motion.div>
+
+              {/* Phone CTA */}
+              <motion.a
+                variants={reduceMotion ? {} : heroCtaVariants}
+                initial="hidden"
+                animate="visible"
+                href={PHONE_HREF}
+                className="mt-2 inline-flex items-center gap-1.5 text-sm text-white/40 transition-colors hover:text-brand-gold"
+                style={{ willChange: 'transform, opacity' }}
+              >
+                <Phone size={14} />
+                {PHONE}
+              </motion.a>
             </div>
           </div>
-
-          {/* CTA buttons */}
-          <motion.div
-            variants={reduceMotion ? {} : heroCtaVariants}
-            initial="hidden"
-            animate="visible"
-            className="mt-8 flex flex-wrap items-center justify-center gap-3"
-            style={{ willChange: 'transform, opacity' }}
-          >
-            <a
-              href="#menu"
-              onClick={(e) => {
-                e.preventDefault()
-                document.querySelector('#menu')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-              className="inline-flex items-center gap-2 rounded-full bg-brand-gold px-6 py-3 text-sm sm:text-base font-bold text-black transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-brand-gold-light active:scale-[0.97] btn-gold-glow"
-            >
-              See Our Menu
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black/10 text-xs font-normal" aria-hidden="true">
-                ↓
-              </span>
-            </a>
-
-            <a
-              href={UBER_EATS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-brand-gold px-6 py-3 text-sm sm:text-base font-bold text-brand-gold transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-brand-gold hover:text-black active:scale-[0.97]"
-            >
-              Order on Uber Eats
-              <span className="flex h-6 w-6 items-center justify-center rounded-full border border-brand-gold/30 text-xs" aria-hidden="true">
-                ↗
-              </span>
-            </a>
-          </motion.div>
-
-          {/* Phone CTA */}
-          <motion.a
-            variants={reduceMotion ? {} : heroCtaVariants}
-            initial="hidden"
-            animate="visible"
-            href={PHONE_HREF}
-            className="mt-2 inline-flex items-center gap-1.5 text-sm text-white/40 transition-colors hover:text-brand-gold"
-            style={{ willChange: 'transform, opacity' }}
-          >
-            <Phone size={14} />
-            {PHONE}
-          </motion.a>
         </div>
 
         {/* Scroll indicator */}
