@@ -40,18 +40,18 @@ export default function Hero() {
       />
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-1 flex-col justify-center">
+      <div className="relative z-10 flex flex-1 flex-col">
         {/* Top spacer for navbar */}
         <div className="h-16 flex-shrink-0" />
 
-        {/* Hero content */}
-        <div className="flex flex-col items-center px-4 pb-2 pt-4 text-center">
+        {/* Hero content — space-around distributes eyebrow / logo+description / scroll indicator evenly */}
+        <div className="flex flex-1 flex-col items-center justify-around px-4 py-4 text-center">
           {/* Eyebrow tag */}
           <motion.div
             variants={reduceMotion ? {} : heroHeadlineVariants}
             initial="hidden"
             animate="visible"
-            className="mb-5 flex w-full justify-center"
+            className="mb-6 flex w-full justify-center sm:mb-0"
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-brand-gold/30 px-3 py-1 text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold/70">
               GTA&apos;s Rock-n-Roll Street Food
@@ -75,7 +75,7 @@ export default function Hero() {
                 width={685}
                 height={423}
                 priority
-                className="h-auto w-full max-w-sm sm:max-w-md lg:max-w-none"
+                className="h-auto w-full max-w-sm sm:max-w-md lg:max-w-none [@media(max-height:700px)]:max-w-[200px] [@media(max-height:700px)]:lg:max-w-[280px]"
               />
             </motion.div>
 
@@ -164,29 +164,29 @@ export default function Hero() {
               </motion.a>
             </div>
           </div>
-        </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          variants={reduceMotion ? {} : heroCtaVariants}
-          initial="hidden"
-          animate="visible"
-          className="mt-auto flex justify-center pb-6 pt-1"
-          aria-hidden="true"
-        >
-          <div className="flex flex-col items-center gap-1 text-white/25">
-            <span className="text-[10px] uppercase tracking-[0.2em]">Scroll</span>
-            <svg
-              className="animate-scroll-down h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-        </motion.div>
+          {/* Scroll indicator */}
+          <motion.div
+            variants={reduceMotion ? {} : heroCtaVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex justify-center"
+            aria-hidden="true"
+          >
+            <div className="flex flex-col items-center gap-1 text-white/25">
+              <span className="text-[10px] uppercase tracking-[0.2em]">Scroll</span>
+              <svg
+                className="animate-scroll-down h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Bottom gradient into next section */}
