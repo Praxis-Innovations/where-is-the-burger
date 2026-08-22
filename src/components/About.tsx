@@ -74,9 +74,13 @@ export default function About() {
             </p>
 
             <p className="text-white/60 leading-relaxed text-base md:text-lg">
-              From the crispy paneer pioneer to the golden chicken crunch —
-              every bite is a little bit India, a little bit Canada, and a
-              whole lot of delicious. Rock on.
+              From the crispy Paneer Pioneer to our golden, crunchy chicken
+              creations, our menu brings two worlds together — a little bit
+              of India, a little bit of Canada, and a whole lot of delicious.
+            </p>
+
+            <p className="text-white font-semibold leading-relaxed text-base md:text-lg">
+              Bold flavours. Big cravings. No ordinary burgers.
             </p>
           </RevealSection>
 
