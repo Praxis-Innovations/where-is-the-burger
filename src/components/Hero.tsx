@@ -51,8 +51,9 @@ export default function Hero() {
             variants={reduceMotion ? {} : heroHeadlineVariants}
             initial="hidden"
             animate="visible"
+            className="mb-5 flex w-full justify-center"
           >
-            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand-gold/30 px-3 py-1 text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold/70">
+            <span className="inline-flex items-center gap-2 rounded-full border border-brand-gold/30 px-3 py-1 text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold/70">
               GTA&apos;s Rock-n-Roll Street Food
             </span>
           </motion.div>
@@ -119,7 +120,7 @@ export default function Hero() {
                 variants={reduceMotion ? {} : heroCtaVariants}
                 initial="hidden"
                 animate="visible"
-                className="mt-6 flex flex-wrap items-center justify-center gap-3"
+                className="mt-10 flex flex-wrap items-center justify-center gap-4"
                 style={{ willChange: 'transform, opacity' }}
               >
                 <a
@@ -155,7 +156,7 @@ export default function Hero() {
                 initial="hidden"
                 animate="visible"
                 href={PHONE_HREF}
-                className="mt-2 inline-flex items-center gap-1.5 text-sm text-white/40 transition-colors hover:text-brand-gold"
+                className="mt-6 inline-flex items-center gap-1.5 text-sm text-white/40 transition-colors hover:text-brand-gold"
                 style={{ willChange: 'transform, opacity' }}
               >
                 <Phone size={14} />
@@ -170,7 +171,7 @@ export default function Hero() {
           variants={reduceMotion ? {} : heroCtaVariants}
           initial="hidden"
           animate="visible"
-          className="flex justify-center pb-4 pt-1"
+          className="mt-auto flex justify-center pb-6 pt-1"
           aria-hidden="true"
         >
           <div className="flex flex-col items-center gap-1 text-white/25">
