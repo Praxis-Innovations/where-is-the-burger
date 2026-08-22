@@ -4,7 +4,6 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import Image from 'next/image'
 import { useReducedMotion } from 'framer-motion'
 import { featuredItems, UBER_EATS_URL } from '@/data/menu'
-import { formatPrice } from '@/lib/utils'
 import SectionHeading from '@/components/ui/SectionHeading'
 import RevealSection from '@/components/ui/RevealSection'
 import { Leaf, Drumstick } from 'lucide-react'
@@ -191,10 +190,7 @@ export default function FeaturedCarousel() {
                     )}
 
                     {/* Card footer */}
-                    <div className="flex items-center justify-between p-5">
-                      <span className="font-bangers text-3xl text-brand-gold">
-                        {formatPrice(item.price)}
-                      </span>
+                    <div className="flex items-center justify-end p-5">
                       <a
                         href={UBER_EATS_URL}
                         target="_blank"

@@ -5,8 +5,6 @@ export type MenuCategory =
   | 'desserts'
   | 'drinks'
 
-export type SpiceLevel = 'mild' | 'medium' | 'hot'
-
 export interface MenuItem {
   id: string
   name: string
@@ -15,7 +13,6 @@ export interface MenuItem {
   image?: string
   category: MenuCategory
   isVegetarian: boolean | 'both'
-  spiceLevel?: SpiceLevel
   isFeatured?: boolean
   featuredTagline?: string
 }

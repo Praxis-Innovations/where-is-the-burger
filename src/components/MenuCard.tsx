@@ -2,9 +2,8 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
-import { formatPrice } from '@/lib/utils'
 import { UBER_EATS_URL } from '@/data/menu'
-import { Leaf, Drumstick, Flame, CupSoda, Sandwich, Salad, Cookie } from 'lucide-react'
+import { Leaf, Drumstick, CupSoda, Sandwich, Salad, Cookie } from 'lucide-react'
 import type { MenuItem, MenuCategory } from '@/types'
 
 interface MenuCardProps {
@@ -58,27 +57,6 @@ function VegBadge({ isVegetarian, size = 12 }: { isVegetarian: MenuItem['isVeget
   )
 }
 
-function SpiceIndicator({ level }: { level: MenuItem['spiceLevel'] }) {
-  if (!level || level === 'mild') return null
-  const counts = { mild: 0, medium: 1, hot: 2 }
-  const count = counts[level] ?? 0
-  const labels = { mild: 'Mild', medium: 'Medium Heat', hot: 'Hot' }
-  return (
-    <div
-      className="flex items-center gap-0.5"
-      aria-label={`Spice level: ${labels[level]}`}
-    >
-      {Array.from({ length: 2 }).map((_, i) => (
-        <Flame
-          key={i}
-          size={13}
-          className={`${i < count ? 'text-orange-400 opacity-100' : 'text-white/20 opacity-40'}`}
-        />
-      ))}
-    </div>
-  )
-}
-
 export default function MenuCard({ item }: MenuCardProps) {
   const [expanded, setExpanded] = useState(false)
   const [isOverflowing, setIsOverflowing] = useState(false)
@@ -93,7 +71,7 @@ export default function MenuCard({ item }: MenuCardProps) {
   return (
     <article
       className="menu-card flex flex-col h-full w-full cursor-default"
-      aria-label={`${item.name}, ${formatPrice(item.price)}`}
+      aria-label={item.name}
     >
       <div className="rounded-[1.5rem] p-1.5 bg-white/[0.025] ring-1 ring-white/10 h-full flex flex-col">
         <div className="menu-card-inner rounded-[1.25rem] bg-black shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)] overflow-hidden flex flex-col flex-1 relative">
@@ -141,9 +119,6 @@ export default function MenuCard({ item }: MenuCardProps) {
             >
               <div className="flex items-center gap-2 mb-3">
                 <VegBadge isVegetarian={item.isVegetarian} size={12} />
-                {item.spiceLevel && item.spiceLevel !== 'mild' && (
-                  <SpiceIndicator level={item.spiceLevel} />
-                )}
               </div>
               <h3 className="font-bangers text-xl text-white leading-tight tracking-wide mb-2">
                 {item.name}
@@ -151,10 +126,7 @@ export default function MenuCard({ item }: MenuCardProps) {
               <p className="text-white/60 text-sm leading-relaxed flex-1">
                 {item.description}
               </p>
-              <div className="flex items-center justify-between pt-3 border-t border-white/5 mt-3">
-                <span className="font-bangers text-2xl text-brand-gold tracking-wide">
-                  {formatPrice(item.price)}
-                </span>
+              <div className="flex items-center justify-end pt-3 border-t border-white/5 mt-3">
                 <span className="text-[11px] text-white/30 uppercase tracking-widest">
                   Tap to close
                 </span>
@@ -167,9 +139,6 @@ export default function MenuCard({ item }: MenuCardProps) {
             {/* Badges row */}
             <div className="flex items-center gap-2 flex-wrap">
               <VegBadge isVegetarian={item.isVegetarian} size={12} />
-              {item.spiceLevel && item.spiceLevel !== 'mild' && (
-                <SpiceIndicator level={item.spiceLevel} />
-              )}
             </div>
 
             {/* Name */}
@@ -192,11 +161,8 @@ export default function MenuCard({ item }: MenuCardProps) {
               )}
             </div>
 
-            {/* Price */}
-            <div className="flex items-center justify-between pt-2 border-t border-white/5 mt-auto">
-              <span className="font-bangers text-2xl text-brand-gold tracking-wide">
-                {formatPrice(item.price)}
-              </span>
+            {/* Order link */}
+            <div className="flex items-center justify-end pt-2 border-t border-white/5 mt-auto">
               <a
                 href={UBER_EATS_URL}
                 target="_blank"

@@ -98,7 +98,7 @@ export default function Reviews() {
               key={i}
               className="inline-flex items-center gap-4 px-8 font-bangers text-xl text-brand-gold/30 tracking-widest"
             >
-              <HandMetal size={18} className="inline" /> ROCK REVIEWS <span className="mx-1">&#8226;</span> WHERE&apos;S THE BURGER <span className="mx-1">&#8226;</span> INDIAN FUSION <span className="mx-1">&#8226;</span> GTA STREET FOOD
+              <HandMetal size={18} className="inline" /> ROCK REVIEWS <span className="mx-1">&#8226;</span> WHERE&apos;S THE BURGER <span className="mx-1">&#8226;</span> INDIAN FUSION
             </span>
           ))}
         </div>
