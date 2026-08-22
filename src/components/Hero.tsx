@@ -94,6 +94,29 @@ export default function Hero() {
             Brioche buns. House-made sauces. Zero apologies.
           </motion.p>
 
+          {/* Welcome description */}
+          <motion.div
+            variants={reduceMotion ? {} : heroSublineVariants}
+            initial="hidden"
+            animate="visible"
+            className="mt-4 max-w-xl text-sm sm:text-base text-white/50 leading-relaxed space-y-3"
+            style={{ willChange: 'transform, opacity' }}
+          >
+            <p>
+              Welcome to Where&apos;s The Burger — where bold flavours, stacked
+              burgers, loaded Dirty Fries and dreamy desserts come together
+              under one roof.
+            </p>
+            <p>
+              We&apos;re here to make food that&apos;s fun, flavour-packed and
+              seriously satisfying. From our signature burgers to our Dirty
+              Fries and Dreamy Creamy Sandos, everything on the menu is made
+              to give you something worth coming back for.
+            </p>
+            <p>So, if you&apos;ve been wondering Where&apos;s the Burger?</p>
+            <p className="text-brand-gold font-semibold">Your search ends here.</p>
+          </motion.div>
+
           {/* CTA buttons */}
           <motion.div
             variants={reduceMotion ? {} : heroCtaVariants}

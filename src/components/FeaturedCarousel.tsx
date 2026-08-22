@@ -4,7 +4,6 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import Image from 'next/image'
 import { useReducedMotion } from 'framer-motion'
 import { featuredItems, UBER_EATS_URL } from '@/data/menu'
-import { formatPrice } from '@/lib/utils'
 import SectionHeading from '@/components/ui/SectionHeading'
 import RevealSection from '@/components/ui/RevealSection'
 import { Leaf, Drumstick } from 'lucide-react'
@@ -149,13 +148,6 @@ export default function FeaturedCarousel() {
                           aria-hidden="true"
                         />
 
-                        {/* Number badge */}
-                        <div className="absolute top-4 left-4">
-                          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-gold font-bangers text-xl text-black">
-                            {i + 1}
-                          </span>
-                        </div>
-
                         {/* Veg/Non-veg badge */}
                         <div className="absolute top-4 right-4 flex flex-col gap-1 items-end">
                           {item.isVegetarian === 'both' ? (
@@ -192,8 +184,8 @@ export default function FeaturedCarousel() {
 
                     {/* Card footer */}
                     <div className="flex items-center justify-between p-5">
-                      <span className="font-bangers text-3xl text-brand-gold">
-                        {formatPrice(item.price)}
+                      <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-brand-gold font-bangers text-xl text-black">
+                        {i + 1}
                       </span>
                       <a
                         href={UBER_EATS_URL}

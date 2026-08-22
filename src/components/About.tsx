@@ -11,11 +11,6 @@ const ownerImages = [
     alt: 'Owner of Where\'s the Burger holding one of the signature burgers',
     caption: 'The Man Behind the Bun',
   },
-  {
-    src: '/images/owner/772632295_18162781051453569_6560050217998160816_n.jpg',
-    alt: 'Owner in an epic action shot cutting a giant burger',
-    caption: 'Going All In',
-  },
 ]
 
 export default function About() {
@@ -66,7 +61,7 @@ export default function About() {
             />
 
             <p className="text-white/60 leading-relaxed text-base md:text-lg">
-              We took the bold, vibrant flavours of Indian street food — the
+              We took the bold, vibrant flavours of Indian food — the
               fiery spices, the creamy tandoori sauces, the fresh cilantro
               explosion — and said: <span className="text-brand-gold font-semibold">what if we put all of that between a
               golden brioche bun?</span>
@@ -74,15 +69,18 @@ export default function About() {
 
             <p className="text-white/60 leading-relaxed text-base md:text-lg">
               Every burger is handcrafted to order. Our signature{' '}
-              <span className="text-white font-medium">Tami Rami sauce</span> and{' '}
-              <span className="text-white font-medium">Creamy Tandoori</span> are
+              <span className="text-white font-medium">sauces</span> are
               made in-house and they&apos;re the reason people find us wherever we park.
             </p>
 
             <p className="text-white/60 leading-relaxed text-base md:text-lg">
-              From the crispy paneer pioneer to the golden chicken crunch —
-              every bite is a little bit India, a little bit Canada, and a
-              whole lot of delicious. Rock on.
+              From the crispy Paneer Pioneer to our golden, crunchy chicken
+              creations, our menu brings two worlds together — a little bit
+              of India, a little bit of Canada, and a whole lot of delicious.
+            </p>
+
+            <p className="text-white font-semibold leading-relaxed text-base md:text-lg">
+              Bold flavours. Big cravings. No ordinary burgers.
             </p>
           </RevealSection>
 

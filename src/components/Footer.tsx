@@ -35,8 +35,8 @@ export default function Footer() {
               </div>
             </a>
             <p className="text-sm text-white/40 leading-relaxed max-w-sm">
-              Indian-fusion street food that rocks. Handcrafted burgers, loaded sides,
-              dreamy desserts, and thick shakes — served with a lot of attitude.
+              Indian-fusion food that rocks. Handcrafted burgers, loaded sides,
+              dreamy desserts, and thick shakes — Made Bold. Served Bolder.
             </p>
             <p className="font-bangers text-xl text-brand-gold/60 tracking-wide italic">
               &ldquo;Still looking for the burger? You found it.&rdquo;

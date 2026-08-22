@@ -8,8 +8,8 @@ export const UBER_EATS_URL =
 export const ADDRESS = '1300 Steeles Ave E, Brampton, ON L6T 4T2'
 export const PHONE = '647-395-9091'
 export const PHONE_HREF = 'tel:+16473959091'
-export const EMAIL = 'sukhdeep87@gmail.com'
-export const EMAIL_HREF = 'mailto:sukhdeep87@gmail.com'
+export const EMAIL = 'sukhdeep@wherestheburger.com'
+export const EMAIL_HREF = 'mailto:sukhdeep@wherestheburger.com'
 
 export const GOOGLE_MAPS_EMBED_URL =
   'https://maps.google.com/maps?q=1300+Steeles+Ave+E,+Brampton,+ON+L6T+4T2&z=15&output=embed'
@@ -17,12 +17,13 @@ export const GOOGLE_MAPS_DIRECTIONS_URL =
   'https://www.google.com/maps/dir/?api=1&destination=1300+Steeles+Ave+E,+Brampton,+ON+L6T+4T2'
 
 export const hours = [
-  { day: 'Wednesday', time: '3:00 PM – 12:00 AM' },
-  { day: 'Thursday', time: '3:00 PM – 12:00 AM' },
-  { day: 'Friday', time: '3:00 PM – 1:00 AM' },
-  { day: 'Saturday', time: '3:00 PM – 1:00 AM' },
-  { day: 'Sunday', time: '3:00 PM – 12:00 AM' },
-  { day: 'Mon – Tue', time: 'Closed' },
+  { day: 'Tuesday', time: '4:00 PM – 11:00 PM' },
+  { day: 'Wednesday', time: '4:00 PM – 11:00 PM' },
+  { day: 'Thursday', time: '4:00 PM – 11:00 PM' },
+  { day: 'Friday', time: '4:00 PM – 12:00 AM' },
+  { day: 'Saturday', time: '4:00 PM – 12:00 AM' },
+  { day: 'Sunday', time: '4:00 PM – 11:00 PM' },
+  { day: 'Monday', time: 'Closed' },
 ]
 
 export const menuCategories: MenuCategoryMeta[] = [
@@ -43,7 +44,6 @@ export const menuItems: MenuItem[] = [
     image: '/images/food/mash-potash-veg.jpeg',
     category: 'veg-burgers',
     isVegetarian: true,
-    spiceLevel: 'medium',
     isFeatured: false,
     featuredTagline: 'The potato patty that changed everything',
   },
@@ -56,7 +56,6 @@ export const menuItems: MenuItem[] = [
     image: '/images/food/green-bean-veg.jpeg',
     category: 'veg-burgers',
     isVegetarian: true,
-    spiceLevel: 'hot',
   },
   {
     id: 'paneer-pioneer',
@@ -67,7 +66,6 @@ export const menuItems: MenuItem[] = [
     image: '/images/food/paneer-pioneer-veg.jpeg',
     category: 'veg-burgers',
     isVegetarian: true,
-    spiceLevel: 'medium',
     isFeatured: true,
     featuredTagline: 'Golden crispy paneer magic',
   },
@@ -80,7 +78,6 @@ export const menuItems: MenuItem[] = [
     image: undefined,
     category: 'veg-burgers',
     isVegetarian: true,
-    spiceLevel: 'mild',
   },
   {
     id: 'munchy-crunchy',
@@ -91,7 +88,6 @@ export const menuItems: MenuItem[] = [
     image: '/images/food/munchy-crunchy-non-veg.jpeg',
     category: 'nonveg-burgers',
     isVegetarian: false,
-    spiceLevel: 'hot',
     isFeatured: true,
     featuredTagline: 'The crowd-favourite crunch',
   },
@@ -104,7 +100,6 @@ export const menuItems: MenuItem[] = [
     image: '/images/food/chickly-pickly-non-veg.jpeg',
     category: 'nonveg-burgers',
     isVegetarian: false,
-    spiceLevel: 'medium',
   },
   {
     id: 'dirty-fries',
@@ -115,7 +110,6 @@ export const menuItems: MenuItem[] = [
     image: '/images/food/dirty-fries-veg-and-non-veg.jpeg',
     category: 'sides',
     isVegetarian: 'both',
-    spiceLevel: 'hot',
     isFeatured: true,
     featuredTagline: 'Dangerously loaded fries',
   },
@@ -128,7 +122,6 @@ export const menuItems: MenuItem[] = [
     image: '/images/food/paneer-popcorn.png',
     category: 'sides',
     isVegetarian: true,
-    spiceLevel: 'medium',
   },
   {
     id: 'dreamy-creamy-pistachio',
@@ -139,7 +132,8 @@ export const menuItems: MenuItem[] = [
     image: '/images/food/Dreamy-Creamy-Sandos-Pistachio.jpeg',
     category: 'desserts',
     isVegetarian: true,
-    spiceLevel: 'mild',
+    isFeatured: true,
+    featuredTagline: 'The sweet finale',
   },
   {
     id: 'dreamy-creamy-dulce',
@@ -150,7 +144,6 @@ export const menuItems: MenuItem[] = [
     image: '/images/food/Dreamy-Creamy-Sando-Dulche-de-Leche.jpeg',
     category: 'desserts',
     isVegetarian: true,
-    spiceLevel: 'mild',
   },
   {
     id: 'dreamy-creamy-biscoff',
@@ -161,9 +154,6 @@ export const menuItems: MenuItem[] = [
     image: '/images/food/Dreamy-Creamy-Sando-Biscoff.jpeg',
     category: 'desserts',
     isVegetarian: true,
-    spiceLevel: 'mild',
-    isFeatured: true,
-    featuredTagline: 'The sweet finale',
   },
   {
     id: 'mango-shake',
@@ -174,7 +164,6 @@ export const menuItems: MenuItem[] = [
     image: '/images/food/Mango-Ish-Shake.jpeg',
     category: 'drinks',
     isVegetarian: true,
-    spiceLevel: 'mild',
   },
   {
     id: 'straw-a-berry-shake',
@@ -185,7 +174,6 @@ export const menuItems: MenuItem[] = [
     image: '/images/food/straw-a-berry-shake.png',
     category: 'drinks',
     isVegetarian: true,
-    spiceLevel: 'mild',
   },
   {
     id: 'pop',
@@ -194,7 +182,6 @@ export const menuItems: MenuItem[] = [
     description: 'Refreshing canned pop to wash it all down.',
     category: 'drinks',
     isVegetarian: true,
-    spiceLevel: 'mild',
   },
   {
     id: 'water',
@@ -203,7 +190,6 @@ export const menuItems: MenuItem[] = [
     description: 'Stay hydrated between bites.',
     category: 'drinks',
     isVegetarian: true,
-    spiceLevel: 'mild',
   },
 ]
 
