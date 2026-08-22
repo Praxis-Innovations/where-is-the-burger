@@ -58,7 +58,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Logo + description side by side */}
-          <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          <div className="grid w-full max-w-6xl grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-16">
             {/* Big logo */}
             <motion.div
               variants={reduceMotion ? {} : heroHeadlineVariants}
@@ -74,7 +74,7 @@ export default function Hero() {
                 width={685}
                 height={423}
                 priority
-                className="h-auto w-full max-w-sm sm:max-w-md lg:max-w-xl"
+                className="h-auto w-full max-w-sm sm:max-w-md lg:max-w-2xl"
               />
             </motion.div>
 
@@ -84,7 +84,7 @@ export default function Hero() {
                 variants={reduceMotion ? {} : heroSublineVariants}
                 initial="hidden"
                 animate="visible"
-                className="max-w-md text-sm sm:text-base text-white/60 leading-relaxed"
+                className="max-w-md lg:max-w-lg text-sm sm:text-base lg:text-lg text-white/60 leading-relaxed"
                 style={{ willChange: 'transform, opacity' }}
               >
                 Indian-Fusion Street Food That Rocks.
@@ -96,7 +96,7 @@ export default function Hero() {
                 variants={reduceMotion ? {} : heroSublineVariants}
                 initial="hidden"
                 animate="visible"
-                className="mt-4 max-w-md space-y-3 text-sm sm:text-base text-white/50 leading-relaxed"
+                className="mt-4 max-w-md lg:max-w-lg space-y-3 text-sm sm:text-base lg:text-lg text-white/50 leading-relaxed"
                 style={{ willChange: 'transform, opacity' }}
               >
                 <p>
