@@ -58,7 +58,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Logo + description side by side */}
-          <div className="grid w-full max-w-6xl grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-16">
+          <div className="grid w-full max-w-7xl grid-cols-1 items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
             {/* Big logo */}
             <motion.div
               variants={reduceMotion ? {} : heroHeadlineVariants}
@@ -74,7 +74,7 @@ export default function Hero() {
                 width={685}
                 height={423}
                 priority
-                className="h-auto w-full max-w-sm sm:max-w-md lg:max-w-2xl"
+                className="h-auto w-full max-w-sm sm:max-w-md lg:max-w-none"
               />
             </motion.div>
 
