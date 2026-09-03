@@ -54,7 +54,7 @@ export default function About() {
           <RevealSection className="flex flex-col gap-5">
             <SectionHeading
               eyebrow="Our Story"
-              title="Not Your Average Burger Joint"
+              title="Burgers with a whole different vibe"
               align="left"
               titleClassName="text-4xl sm:text-5xl md:text-6xl"
               id="about-heading"
@@ -70,7 +70,7 @@ export default function About() {
             <p className="text-white/60 leading-relaxed text-base md:text-lg">
               Every burger is handcrafted to order. Our signature{' '}
               <span className="text-white font-medium">sauces</span> are
-              made in-house and they&apos;re the reason people find us wherever we park.
+              made in-house and they&apos;re the reason people find us.
             </p>
 
             <p className="text-white/60 leading-relaxed text-base md:text-lg">
