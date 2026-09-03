@@ -44,20 +44,8 @@ export default function Hero() {
         {/* Top spacer for navbar */}
         <div className="h-16 flex-shrink-0" />
 
-        {/* Hero content — space-around distributes eyebrow / logo+description / scroll indicator evenly */}
-        <div className="flex flex-1 flex-col items-center justify-around px-4 py-4 text-center">
-          {/* Eyebrow tag */}
-          <motion.div
-            variants={reduceMotion ? {} : heroHeadlineVariants}
-            initial="hidden"
-            animate="visible"
-            className="mb-6 flex w-full justify-center sm:mb-0"
-          >
-            <span className="inline-flex items-center gap-2 rounded-full border border-brand-gold/30 px-3 py-1 text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold/70">
-              GTA&apos;s Rock-n-Roll Street Food
-            </span>
-          </motion.div>
-
+        {/* Hero content — centered vertically, scroll indicator pinned to bottom independently */}
+        <div className="flex flex-1 flex-col items-center justify-center px-4 py-4 pb-16 text-center">
           {/* Logo + description side by side */}
           <div className="grid w-full max-w-7xl grid-cols-1 items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
             {/* Big logo */}
@@ -81,23 +69,11 @@ export default function Hero() {
 
             {/* Subheadline + description + CTAs */}
             <div className="flex flex-col items-center text-center">
-              <motion.p
-                variants={reduceMotion ? {} : heroSublineVariants}
-                initial="hidden"
-                animate="visible"
-                className="max-w-md lg:max-w-lg text-sm sm:text-base lg:text-lg text-white/60 leading-relaxed"
-                style={{ willChange: 'transform, opacity' }}
-              >
-                Indian-Fusion Street Food That Rocks.
-                <br />
-                Brioche buns. House-made sauces. Zero apologies.
-              </motion.p>
-
               <motion.div
                 variants={reduceMotion ? {} : heroSublineVariants}
                 initial="hidden"
                 animate="visible"
-                className="mt-4 max-w-md lg:max-w-lg space-y-3 text-sm sm:text-base lg:text-lg text-white/50 leading-relaxed"
+                className="max-w-md lg:max-w-lg space-y-3 text-sm sm:text-base lg:text-lg text-white/50 leading-relaxed"
                 style={{ willChange: 'transform, opacity' }}
               >
                 <p>
@@ -164,27 +140,26 @@ export default function Hero() {
               </motion.a>
             </div>
           </div>
+        </div>
 
-          {/* Scroll indicator */}
+        {/* Scroll indicator — pinned to bottom, independent of content height */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex justify-center" aria-hidden="true">
           <motion.div
             variants={reduceMotion ? {} : heroCtaVariants}
             initial="hidden"
             animate="visible"
-            className="flex justify-center"
-            aria-hidden="true"
+            className="flex flex-col items-center gap-1 text-white/25"
           >
-            <div className="flex flex-col items-center gap-1 text-white/25">
-              <span className="text-[10px] uppercase tracking-[0.2em]">Scroll</span>
-              <svg
-                className="animate-scroll-down h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
+            <span className="text-[10px] uppercase tracking-[0.2em]">Scroll</span>
+            <svg
+              className="animate-scroll-down h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
           </motion.div>
         </div>
       </div>
