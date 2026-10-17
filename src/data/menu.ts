@@ -17,12 +17,12 @@ export const GOOGLE_MAPS_DIRECTIONS_URL =
   'https://www.google.com/maps/dir/?api=1&destination=1300+Steeles+Ave+E,+Brampton,+ON+L6T+4T2'
 
 export const hours = [
-  { day: 'Tuesday', time: '4:00 PM – 11:00 PM' },
-  { day: 'Wednesday', time: '4:00 PM – 11:00 PM' },
-  { day: 'Thursday', time: '4:00 PM – 11:00 PM' },
-  { day: 'Friday', time: '4:00 PM – 12:00 AM' },
-  { day: 'Saturday', time: '4:00 PM – 12:00 AM' },
-  { day: 'Sunday', time: '4:00 PM – 11:00 PM' },
+  { day: 'Tuesday', time: '2:00 PM – 11:00 PM' },
+  { day: 'Wednesday', time: '2:00 PM – 11:00 PM' },
+  { day: 'Thursday', time: '2:00 PM – 11:00 PM' },
+  { day: 'Friday', time: '2:00 PM – 12:00 AM' },
+  { day: 'Saturday', time: '2:00 PM – 12:00 AM' },
+  { day: 'Sunday', time: '2:00 PM – 11:00 PM' },
   { day: 'Monday', time: 'Closed' },
 ]
 
